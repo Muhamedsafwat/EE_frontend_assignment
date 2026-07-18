@@ -1,0 +1,211 @@
+[
+  {
+    "id": "cam-v4",
+    "name": "Wyze Cam v4",
+    "description": "The clearest Wyze Cam ever made.",
+    "comparedAtPrice": 35.98,
+    "price": 27.98,
+    "category": "cameras",
+    "variants": [
+      {
+        "id": "white",
+        "name": "White",
+        "image": "/images/cameras/cam-v4-white.png"
+      },
+      {
+        "id": "grey",
+        "name": "Grey",
+        "image": "/images/cameras/cam-v4-grey.png"
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "image": "/images/cameras/cam-v4-black.png"
+      }
+    ]
+  },
+  {
+    "id": "cam-pan-v3",
+    "name": "Wyze Cam Pan v3",
+    "description": "360° pan and 180° tilt security camera.",
+    "comparedAtPrice": 39.98,
+    "price": 34.98,
+    "category": "cameras",
+    "variants": [
+      {
+        "id": "white",
+        "name": "White",
+        "image": "/images/cameras/pan-v3-white.png"
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "image": "/images/cameras/pan-v3-black.png"
+      }
+    ]
+  },
+  {
+    "id": "cam-floodlight-v2",
+    "name": "Wyze Cam Floodlight v2",
+    "description": "2K floodlight camera with a 160° wide-angle view.",
+    "comparedAtPrice": 89.98,
+    "price": 69.98,
+    "category": "cameras",
+    "variants": [
+      {
+        "id": "white",
+        "name": "White",
+        "image": "/images/cameras/floodlight-white.png"
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "image": "/images/cameras/floodlight-black.png"
+      }
+    ]
+  },
+  {
+    "id": "cam-doorbell",
+    "name": "Wyze Duo Cam Doorbell",
+    "description": "Two cameras. Two views. Double the protection.",
+    "price": 69.98,
+    "image": "/images/cameras/doorbell.png",
+    "category": "cameras"
+  },
+  {
+    "id": "battery-cam-pro",
+    "name": "Wyze Battery Cam Pro",
+    "description": "Wire-free 2.5K HDR battery-powered security camera.",
+    "price": 89.98,
+    "category": "cameras",
+    "variants": [
+      {
+        "id": "white",
+        "name": "White",
+        "image": "/images/cameras/battery-white.png"
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "image": "/images/cameras/battery-black.png"
+      }
+    ]
+  },
+
+  {
+    "id": "motion-sensor",
+    "name": "Wyze Sense Motion Sensor",
+    "description": "Detects movement inside your home.",
+    "comparedAtPrice": 39.98,
+    "price": 29.99,
+    "image": "/images/sensors/motion.png",
+    "category": "sensors"
+  },
+  {
+    "id": "entry-sensor",
+    "name": "Wyze Sense Entry Sensor",
+    "description": "Know when doors and windows open.",
+    "comparedAtPrice": 24.99,
+    "price": 19.99,
+    "image": "/images/sensors/entry.png",
+    "category": "sensors"
+  },
+  {
+    "id": "climate-sensor",
+    "name": "Wyze Climate Sensor",
+    "description": "Monitors temperature and humidity.",
+    "comparedAtPrice": 34.99,
+    "price": 27.99,
+    "image": "/images/sensors/climate.png",
+    "category": "sensors"
+  },
+  {
+    "id": "leak-sensor",
+    "name": "Wyze Leak Sensor",
+    "description": "Alerts you when water is detected.",
+    "comparedAtPrice": 29.99,
+    "price": 22.99,
+    "image": "/images/sensors/leak.png",
+    "category": "sensors"
+  },
+  {
+    "id": "sense-hub",
+    "name": "Wyze Sense Hub",
+    "description": "Required hub for Wyze Sense devices.",
+    "comparedAtPrice": 29.92,
+    "price": 0,
+    "image": "/images/sensors/hub.png",
+    "category": "sensors",
+    "required": true
+  },
+
+  {
+    "id": "cam-unlimited",
+    "name": "Cam Unlimited",
+    "description": "Unlimited cameras with AI detection.",
+    "comparedAtPrice": 12.99,
+    "price": 9.99,
+    "image": "/images/plans/unlimited.png",
+    "category": "plans"
+  },
+  {
+    "id": "cam-plus",
+    "name": "Cam Plus",
+    "description": "AI events and cloud recording.",
+    "comparedAtPrice": 7.99,
+    "price": 4.99,
+    "image": "/images/plans/plus.png",
+    "category": "plans"
+  },
+  {
+    "id": "cam-lite",
+    "name": "Cam Lite",
+    "description": "Basic cloud recording plan.",
+    "price": 2.99,
+    "image": "/images/plans/lite.png",
+    "category": "plans"
+  },
+
+  {
+    "id": "micro-sd",
+    "name": "Wyze MicroSD Card (256GB)",
+    "description": "Continuous local recording.",
+    "price": 41.96,
+    "image": "/images/accessories/microsd.png",
+    "category": "accessories"
+  },
+  {
+    "id": "solar-panel",
+    "name": "Wyze Solar Panel",
+    "description": "Keep compatible cameras charged.",
+    "comparedAtPrice": 39.99,
+    "price": 29.99,
+    "image": "/images/accessories/solar-panel.png",
+    "category": "accessories"
+  },
+  {
+    "id": "mount-kit",
+    "name": "Wyze Mounting Kit",
+    "description": "Indoor and outdoor mounting hardware.",
+    "price": 14.99,
+    "image": "/images/accessories/mount-kit.png",
+    "category": "accessories"
+  },
+  {
+    "id": "usb-extension",
+    "name": "USB Power Extension Cable",
+    "description": "Extended reach for camera placement.",
+    "price": 9.99,
+    "image": "/images/accessories/extension-cable.png",
+    "category": "accessories"
+  },
+  {
+    "id": "fast-shipping",
+    "name": "Fast Shipping",
+    "description": "Priority shipping for your order.",
+    "comparedAtPrice": 5.99,
+    "price": 0,
+    "image": "/images/accessories/shipping.png",
+    "category": "accessories"
+  }
+]

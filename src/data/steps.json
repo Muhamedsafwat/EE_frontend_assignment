@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "icon": "/images/icons/camera.svg",
+    "title": "Choose your cameras",
+    "productCategory": "cameras"
+  },
+  {
+    "id": "2",
+    "icon": "/images/icons/sensor.svg",
+    "title": "Choose your sensors",
+    "productCategory": "sensors"
+  },
+  {
+    "id": "3",
+    "icon": "/images/icons/plan.svg",
+    "title": "Pick a plan",
+    "productCategory": "plans"
+  },
+  {
+    "id": "4",
+    "icon": "/images/icons/accessories.svg",
+    "title": "Add extra protection",
+    "productCategory": "accessories"
+  }
+]
