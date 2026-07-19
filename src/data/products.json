@@ -10,17 +10,17 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/images/cameras/cam-v4-white.png"
+        "image": "/assets/products/wyze-cam-v4/white.png"
       },
       {
         "id": "grey",
         "name": "Grey",
-        "image": "/images/cameras/cam-v4-grey.png"
+        "image": "/assets/products/wyze-cam-v4/grey.png"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/images/cameras/cam-v4-black.png"
+        "image": "/assets/products/wyze-cam-v4/black.png"
       }
     ]
   },
@@ -35,12 +35,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/images/cameras/pan-v3-white.png"
+        "image": "/assets/products/wyze-cam-pan-v3/white.png"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/images/cameras/pan-v3-black.png"
+        "image": "/assets/products/wyze-cam-pan-v3/black.png"
       }
     ]
   },
@@ -55,12 +55,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/images/cameras/floodlight-white.png"
+        "image": "/assets/products/wyze-cam-floodlight-v2/white.png"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/images/cameras/floodlight-black.png"
+        "image": "/assets/products/wyze-cam-floodlight-v2/black.png"
       }
     ]
   },
@@ -69,7 +69,7 @@
     "name": "Wyze Duo Cam Doorbell",
     "description": "Two cameras. Two views. Double the protection.",
     "price": 69.98,
-    "image": "/images/cameras/doorbell.png",
+    "image": "/assets/products/wyze-duo-cam-doorbell/default.png",
     "category": "cameras"
   },
   {
@@ -82,12 +82,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/images/cameras/battery-white.png"
+        "image": "/assets/products/wyze-battery-cam-pro/white.png"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/images/cameras/battery-black.png"
+        "image": "/assets/products/wyze-battery-cam-pro/black.png"
       }
     ]
   },
@@ -98,8 +98,18 @@
     "description": "Detects movement inside your home.",
     "comparedAtPrice": 39.98,
     "price": 29.99,
-    "image": "/images/sensors/motion.png",
+    "image": "/assets/products/wyze-sense-motion-sensor/default.png",
     "category": "sensors"
+  },
+  {
+    "id": "sense-hub",
+    "name": "Wyze Sense Hub",
+    "description": "Required hub for Wyze Sense devices.",
+    "comparedAtPrice": 29.92,
+    "price": 0,
+    "image": "/assets/products/whyze-sense-hub/white.png",
+    "category": "sensors",
+    "isRequired": true
   },
   {
     "id": "entry-sensor",
@@ -107,7 +117,7 @@
     "description": "Know when doors and windows open.",
     "comparedAtPrice": 24.99,
     "price": 19.99,
-    "image": "/images/sensors/entry.png",
+    "image": "",
     "category": "sensors"
   },
   {
@@ -128,16 +138,7 @@
     "image": "/images/sensors/leak.png",
     "category": "sensors"
   },
-  {
-    "id": "sense-hub",
-    "name": "Wyze Sense Hub",
-    "description": "Required hub for Wyze Sense devices.",
-    "comparedAtPrice": 29.92,
-    "price": 0,
-    "image": "/images/sensors/hub.png",
-    "category": "sensors",
-    "required": true
-  },
+  
 
   {
     "id": "cam-unlimited",
@@ -145,7 +146,7 @@
     "description": "Unlimited cameras with AI detection.",
     "comparedAtPrice": 12.99,
     "price": 9.99,
-    "image": "/images/plans/unlimited.png",
+    "image": "/assets/products/cam-unlimited-plan/default.svg",
     "category": "plans"
   },
   {
@@ -171,7 +172,7 @@
     "name": "Wyze MicroSD Card (256GB)",
     "description": "Continuous local recording.",
     "price": 41.96,
-    "image": "/images/accessories/microsd.png",
+    "image": "/assets/products/wyze-sd-card/default.png",
     "category": "accessories"
   },
   {

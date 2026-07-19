@@ -1,25 +1,25 @@
 [
   {
     "id": "1",
-    "icon": "/images/icons/camera.svg",
+    "icon": "/assets/icons/cam.svg",
     "title": "Choose your cameras",
     "productCategory": "cameras"
   },
   {
     "id": "2",
-    "icon": "/images/icons/sensor.svg",
+    "icon": "/assets/icons/sensors.svg",
     "title": "Choose your sensors",
     "productCategory": "sensors"
   },
   {
     "id": "3",
-    "icon": "/images/icons/plan.svg",
+    "icon": "/assets/icons/shield.svg",
     "title": "Pick a plan",
     "productCategory": "plans"
   },
   {
     "id": "4",
-    "icon": "/images/icons/accessories.svg",
+    "icon": "/assets/icons/extra.svg",
     "title": "Add extra protection",
     "productCategory": "accessories"
   }
