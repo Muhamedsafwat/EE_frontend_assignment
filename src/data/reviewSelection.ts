@@ -1,6 +1,6 @@
 import products from "./products.json";
 import type { Product } from "@/types/data/Product.interface";
-import type { Selection } from "@/types/builder/Selection.interface";
+import { Selection } from "@/types/builder/Selection.interface";
 
 /**
  * Static, mocked review data. The review panel is presentational only, so
@@ -13,7 +13,7 @@ function select(id: string, quantity: number, variantId?: string): Selection {
   const product = catalog.find((item) => item.id === id);
   if (!product) throw new Error(`Unknown product in mock selection: ${id}`);
   const variant = product.variants?.find((v) => v.id === variantId);
-  return { product, variant, quantity };
+  return { productId: id, variantId: variant?.id ?? "", quantity };
 }
 
 export interface ReviewSectionData {

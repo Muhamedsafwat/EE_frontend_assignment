@@ -1,4 +1,4 @@
-import type { Selection } from "@/types/builder/Selection.interface";
+import { Selection } from "@/types/builder/Selection.interface";
 import Thumbnail from "@/components/ui/Thumbnail";
 import PriceTag from "@/components/ui/PriceTag";
 import { TruckIcon } from "@/components/ui/icons";
