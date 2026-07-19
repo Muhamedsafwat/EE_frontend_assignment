@@ -11,15 +11,15 @@ function QuantityStepper({ value }: QuantityStepperProps) {
       <button
         type="button"
         aria-label="Decrease quantity"
-        className="px-2 py-1.5 text-slate-400 hover:text-slate-600"
+        className="px-2 py-1.5 text-icon hover:text-ink-muted"
       >
         <MinusIcon className="h-3 w-3" />
       </button>
-      <span className="min-w-6 text-center text-sm text-slate-800">{value}</span>
+      <span className="min-w-6 text-center text-sm text-ink">{value}</span>
       <button
         type="button"
         aria-label="Increase quantity"
-        className="px-2 py-1.5 text-slate-400 hover:text-slate-600"
+        className="px-2 py-1.5 text-icon hover:text-ink-muted"
       >
         <PlusIcon className="h-3 w-3" />
       </button>

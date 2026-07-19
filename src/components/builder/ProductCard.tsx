@@ -24,9 +24,9 @@ function ProductCard({ product }: ProductCardProps) {
         <Thumbnail src={image} alt={product.name} className="h-24 w-24" />
 
         <div className="flex flex-1 flex-col gap-1">
-          <h4 className="font-semibold text-slate-900">{product.name}</h4>
-          <p className="text-sm text-slate-500">{product.description}</p>
-          <a href="#" className="text-sm font-medium text-indigo-600 hover:underline">
+          <h4 className="font-semibold text-ink">{product.name}</h4>
+          <p className="text-sm text-ink-muted">{product.description}</p>
+          <a href="#" className="text-sm font-medium text-wyze-purple hover:underline">
             Learn More
           </a>
         </div>

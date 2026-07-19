@@ -12,8 +12,8 @@ interface PriceTagProps {
 }
 
 const toneByVariant: Record<PriceVariant, { compared: string; price: string }> = {
-  builder: { compared: "text-red-400", price: "text-rose-600" },
-  review: { compared: "text-slate-400", price: "text-indigo-600" },
+  builder: { compared: "text-sale/60", price: "text-sale" },
+  review: { compared: "text-muted", price: "text-wyze-purple" },
 };
 
 function PriceTag({

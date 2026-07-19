@@ -15,8 +15,8 @@ function VariantSelector({ variants }: VariantSelectorProps) {
           type="button"
           className={`inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs ${
             index === 0
-              ? "border-slate-800 text-slate-900"
-              : "border-slate-200 text-slate-500"
+              ? "border-ink text-ink"
+              : "border-slate-200 text-ink-muted"
           }`}
         >
           <Thumbnail src={variant.image} alt={variant.name} className="h-4 w-4 rounded-sm" />

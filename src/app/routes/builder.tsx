@@ -10,7 +10,7 @@ function BuilderPage() {
   const builderSteps = getBuilderSteps(steps as Step[], products as Product[])
 
   return (
-    <main className="min-h-screen bg-slate-100 py-8">
+    <main className="min-h-screen py-8">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 lg:grid-cols-[1fr_360px]">
         <Builder steps={builderSteps} />
         <ReviewPanel />

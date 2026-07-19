@@ -11,7 +11,7 @@ interface BuilderProps {
  */
 function Builder({ steps }: BuilderProps) {
   return (
-    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-surface">
       {steps.map((step, index) => (
         <StepAccordionItem
           key={step.id}

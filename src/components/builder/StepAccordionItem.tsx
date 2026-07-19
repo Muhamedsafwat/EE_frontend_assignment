@@ -26,17 +26,17 @@ function StepAccordionItem({
   return (
     <details
       open={defaultOpen}
-      className="group border-b border-slate-200 last:border-b-0 open:bg-indigo-50/40"
+      className="group border-b border-slate-200 last:border-b-0 open:bg-surface/40"
     >
       <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-4 [&::-webkit-details-marker]:hidden">
         <Thumbnail src={step.icon} alt="" className="h-9 w-9 bg-transparent" />
         <div className="flex-1">
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted">
             Step {index + 1} of {total}
           </p>
-          <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
+          <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
         </div>
-        <ChevronDownIcon className="h-5 w-5 text-slate-400 transition-transform group-open:rotate-180" />
+        <ChevronDownIcon className="h-5 w-5 text-icon transition-transform group-open:rotate-180" />
       </summary>
 
       <div className="px-5 pb-6">
@@ -46,7 +46,7 @@ function StepAccordionItem({
           <div className="mt-6 flex justify-center">
             <button
               type="button"
-              className="rounded-lg border border-indigo-600 px-5 py-2.5 text-sm font-semibold text-indigo-600 hover:bg-indigo-50"
+              className="rounded-lg border border-wyze-purple px-5 py-2.5 text-sm font-semibold text-wyze-purple hover:bg-surface"
             >
               Next: {nextStepTitle}
             </button>

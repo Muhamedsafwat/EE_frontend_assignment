@@ -14,9 +14,9 @@ function ReviewLineItem({ selection }: ReviewLineItemProps) {
   return (
     <li className="flex items-center gap-3 py-3">
       <Thumbnail src={image} alt={product.name} className="h-9 w-9" />
-      <p className="flex-1 text-sm font-medium text-slate-800">
+      <p className="flex-1 text-sm font-medium text-ink">
         {product.name}
-        {product.isRequired && <span className="text-slate-400"> (Required)</span>}
+        {product.isRequired && <span className="text-muted"> (Required)</span>}
       </p>
       <QuantityStepper value={quantity} />
       <PriceTag

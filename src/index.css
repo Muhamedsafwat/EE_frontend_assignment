@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+  --color-wyze-purple: #4e2fd2;
+  --color-sale: #d8392b;
+  --color-ink: #0b0d10;
+  --color-ink-muted: #1f1f1fbf;
+  --color-muted: #a8b2bd;
+  --color-icon: #6f7882;
+  --color-surface: #edf4ff;
+}

@@ -27,7 +27,7 @@ function Thumbnail({ src, alt, className = "" }: ThumbnailProps) {
           onError={() => setFailed(true)}
         />
       ) : (
-        <ImageIcon className="h-1/2 w-1/2 text-slate-300" />
+        <ImageIcon className="h-1/2 w-1/2 text-icon" />
       )}
     </div>
   );
