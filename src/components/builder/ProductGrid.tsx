@@ -1,6 +1,7 @@
 import type { Product } from "@/types/data/Product.interface";
 import ProductCard from "./ProductCard";
 
+//props
 interface ProductGridProps {
   products: Product[];
 }

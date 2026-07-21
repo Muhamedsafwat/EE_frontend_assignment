@@ -1,21 +1,31 @@
-import type { Variant } from "@/types/data/Product.interface";
+//store
+import { useBuilderStore } from "@/store/builder.store";
+// components
 import Thumbnail from "@/components/ui/Thumbnail";
+//types
+import type { Variant } from "@/types/data/Product.interface";
 
+//props
 interface VariantSelectorProps {
   variants: Variant[];
+  productId: string
 }
 
-/** Variant chips. The first one is shown as selected for display purposes only. */
-function VariantSelector({ variants }: VariantSelectorProps) {
+function VariantSelector({ variants, productId }: VariantSelectorProps) {
+  const { activeVariants, setActiveVariant } = useBuilderStore();
+
   return (
     <div className="flex flex-wrap gap-2">
-      {variants.map((variant, index) => (
+      {variants.map((variant) => (
         <button
+        //active style
+          
+          onClick={() => setActiveVariant(productId,variant.id)}
           key={variant.id}
           type="button"
           className={`inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs ${
-            index === 0
-              ? "border-ink text-ink"
+            activeVariants[productId] === variant.id
+              ? "border-green-600 text-ink"
               : "border-slate-200 text-ink-muted"
           }`}
         >

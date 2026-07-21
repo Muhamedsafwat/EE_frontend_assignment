@@ -6,15 +6,14 @@ import QuantityStepper from "@/components/ui/QuantityStepper";
 import { getSavingsPercent } from "@/lib/formatCurrency";
 import VariantSelector from "./VariantSelector";
 
-interface ProductCardProps {
-  product: Product;
-}
 
-function ProductCard({ product }: ProductCardProps) {
+
+function ProductCard({product}: { product: Product }) {
   const image = product.image ?? product.variants?.[0]?.image;
   const savings = product.comparedAtPrice
     ? getSavingsPercent(product.comparedAtPrice, product.price)
     : 0;
+
 
   return (
     <div className="relative flex flex-col rounded-xl border border-slate-200 bg-white p-4">
@@ -34,12 +33,12 @@ function ProductCard({ product }: ProductCardProps) {
 
       {product.variants && (
         <div className="mt-3">
-          <VariantSelector variants={product.variants} />
+          <VariantSelector variants={product.variants} productId={product.id} />
         </div>
       )}
 
       <div className="mt-4 flex items-end justify-between">
-        <QuantityStepper value={0} />
+        <QuantityStepper productId={product.id} />
         <PriceTag
           price={product.price}
           comparedAtPrice={product.comparedAtPrice}

@@ -1,15 +1,8 @@
 import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
 import StepAccordionItem from "./StepAccordionItem";
 
-interface BuilderProps {
-  steps: BuilderStep[];
-}
 
-/**
- * Left panel: an accordion of build steps, each listing the products
- * available for that step's category.
- */
-function Builder({ steps }: BuilderProps) {
+function Builder({ steps }: {steps: BuilderStep[]}) {
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-200 bg-surface">
       {steps.map((step, index) => (

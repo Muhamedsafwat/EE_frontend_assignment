@@ -34,7 +34,7 @@ function PriceTag({
           {suffix}
         </div>
       )}
-      <div className={`text-sm font-semibold ${tone.price}`}>
+      <div className={`text-sm font-semibold text-ink`}>
         {isFree ? "FREE" : `${formatCurrency(price)}${suffix}`}
       </div>
     </div>

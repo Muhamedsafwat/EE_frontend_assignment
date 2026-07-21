@@ -1,6 +1,6 @@
 import { Selection } from "@/types/builder/Selection.interface";
-import Thumbnail from "@/components/ui/Thumbnail";
-import PriceTag from "@/components/ui/PriceTag";
+// import Thumbnail from "@/components/ui/Thumbnail";
+// import PriceTag from "@/components/ui/PriceTag";
 import { TruckIcon } from "@/components/ui/icons";
 import { formatCurrency } from "@/lib/formatCurrency";
 
@@ -26,6 +26,8 @@ function GuaranteeSeal() {
   );
 }
 
+// TODO: Selection now only carries ids — resolve the product from the catalog
+// and restore the commented-out thumbnails, names and prices below.
 function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
   return (
     <div className="space-y-4">
@@ -36,17 +38,17 @@ function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
         </h3>
         <div className="flex items-center justify-between py-2">
           <div className="flex items-center gap-3">
-            <Thumbnail src={plan.product.image} alt={plan.product.name} className="h-9 w-9" />
+            {/* <Thumbnail src={plan.product.image} alt={plan.product.name} className="h-9 w-9" /> */}
             <span className="text-sm font-semibold text-ink">
-              {plan.product.name}
+              {plan.productId}
             </span>
           </div>
-          <PriceTag
+          {/* <PriceTag
             price={plan.product.price}
             comparedAtPrice={plan.product.comparedAtPrice}
             suffix="/mo"
             variant="review"
-          />
+          /> */}
         </div>
       </div>
 
@@ -54,13 +56,13 @@ function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
       <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
         <div className="flex items-center gap-2 text-sm font-medium text-ink">
           <TruckIcon className="h-5 w-5 text-wyze-purple" />
-          {shipping.product.name}
+          {shipping.productId}
         </div>
-        <PriceTag
+        {/* <PriceTag
           price={shipping.product.price}
           comparedAtPrice={shipping.product.comparedAtPrice}
           variant="review"
-        />
+        /> */}
       </div>
 
       {/* Guarantee + total */}

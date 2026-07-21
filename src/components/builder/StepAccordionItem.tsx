@@ -1,21 +1,19 @@
-import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
+
+//components
 import Thumbnail from "@/components/ui/Thumbnail";
 import { ChevronDownIcon } from "@/components/ui/icons";
 import ProductGrid from "./ProductGrid";
-
+// types
+import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
 interface StepAccordionItemProps {
   step: BuilderStep;
   index: number;
   total: number;
-  /** Title of the following step, used for the "Next" call to action. */
+  //Title of the following step, used for the "Next" call to action.
   nextStepTitle?: string;
   defaultOpen?: boolean;
 }
 
-/**
- * A single accordion step. Uses a native <details> element so expand/collapse
- * works without any state management (this screen is UI only).
- */
 function StepAccordionItem({
   step,
   index,
@@ -23,6 +21,8 @@ function StepAccordionItem({
   nextStepTitle,
   defaultOpen = false,
 }: StepAccordionItemProps) {
+
+
   return (
     <details
       open={defaultOpen}

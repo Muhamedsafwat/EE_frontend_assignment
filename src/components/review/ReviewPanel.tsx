@@ -1,17 +1,13 @@
-import {
-  reviewSections,
-  reviewPlan,
-  reviewShipping,
-  reviewSummary,
-} from "@/data/reviewSelection";
 import ReviewSection from "./ReviewSection";
-import OrderSummary from "./OrderSummary";
+//import OrderSummary from "./OrderSummary";
 
-/**
- * Right panel: a read-only summary of the selected items and pricing.
- * Driven by mocked data — no selection logic lives here.
- */
+
+import { getReviewItems } from "@/selectors/getReviewItems";
+
+
 function ReviewPanel() {
+
+
   return (
     <aside className="h-fit rounded-2xl bg-surface p-6 lg:sticky lg:top-8">
       <p className="text-xs font-medium uppercase tracking-wide text-muted">
@@ -25,19 +21,25 @@ function ReviewPanel() {
         most safe.
       </p>
 
-      <div className="mt-6 space-y-4">
-        {reviewSections.map((section) => (
+      <button
+      onClick={() => console.log(getReviewItems())}
+      className="rounded-lg border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-900 bg-white mt-6">
+        Log review items
+      </button>
+
+       <div className="mt-6 space-y-4">
+        {getReviewItems().map((section) => (
           <ReviewSection
             key={section.title}
             title={section.title}
             items={section.items}
           />
         ))}
-        <OrderSummary
+        {/* <OrderSummary
           plan={reviewPlan}
           shipping={reviewShipping}
           summary={reviewSummary}
-        />
+        /> */}
       </div>
     </aside>
   );
