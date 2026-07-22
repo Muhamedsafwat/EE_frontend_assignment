@@ -9,7 +9,7 @@ interface StepAccordionItemProps {
   step: BuilderStep;
   index: number;
   total: number;
-  //Title of the following step, used for the "Next" call to action.
+
   nextStepTitle?: string;
   defaultOpen?: boolean;
 }

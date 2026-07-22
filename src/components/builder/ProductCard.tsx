@@ -5,6 +5,7 @@ import SavingsBadge from "@/components/ui/SavingsBadge";
 import QuantityStepper from "@/components/ui/QuantityStepper";
 import { getSavingsPercent } from "@/lib/formatCurrency";
 import VariantSelector from "./VariantSelector";
+import { useBuilderStore } from "@/store/builder.store";
 
 
 
@@ -14,6 +15,8 @@ function ProductCard({product}: { product: Product }) {
     ? getSavingsPercent(product.comparedAtPrice, product.price)
     : 0;
 
+  const {activeVariants} = useBuilderStore();
+  const activeVaraint = activeVariants[product.id];
 
   return (
     <div className="relative flex flex-col rounded-xl border border-slate-200 bg-white p-4">
@@ -38,7 +41,7 @@ function ProductCard({product}: { product: Product }) {
       )}
 
       <div className="mt-4 flex items-end justify-between">
-        <QuantityStepper productId={product.id} />
+        <QuantityStepper productId={product.id} variantId={activeVaraint} />
         <PriceTag
           price={product.price}
           comparedAtPrice={product.comparedAtPrice}

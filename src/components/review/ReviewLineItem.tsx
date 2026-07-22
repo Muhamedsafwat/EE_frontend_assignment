@@ -18,7 +18,7 @@ function ReviewLineItem({ item }: ReviewLineItemProps) {
         { product.id} {variant?.id ? `(${variant?.id})` : ""}
          {product.isRequired && <span className="text-muted"> (Required)</span>}
       </p>
-      <QuantityStepper productId={product.id} />
+      <QuantityStepper variantId={variant?.id || ""} productId={product.id} />
        <PriceTag
         price={product.price}
         comparedAtPrice={product.comparedAtPrice}
