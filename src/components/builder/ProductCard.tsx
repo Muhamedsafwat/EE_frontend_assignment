@@ -6,6 +6,7 @@ import QuantityStepper from "@/components/ui/QuantityStepper";
 import { getSavingsPercent } from "@/lib/formatCurrency";
 import VariantSelector from "./VariantSelector";
 import { useBuilderStore } from "@/store/builder.store";
+import ItemSelector from "../ui/ItemSelector";
 
 
 
@@ -41,7 +42,8 @@ function ProductCard({product}: { product: Product }) {
       )}
 
       <div className="mt-4 flex items-end justify-between">
-        <QuantityStepper productId={product.id} variantId={activeVaraint} />
+        {product.category == "plans" ? <ItemSelector productId={product.id} /> : <QuantityStepper productId={product.id} variantId={activeVaraint} />} 
+        
         <PriceTag
           price={product.price}
           comparedAtPrice={product.comparedAtPrice}

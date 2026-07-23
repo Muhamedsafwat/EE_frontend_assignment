@@ -4,15 +4,15 @@ import { useBuilderStore } from "@/store/builder.store";
 
 interface QuantityStepperProps {
   productId: string,
-  variantId: string
+  variantId?: string
 }
 
-/** Presentational quantity control. Wiring is intentionally left out (UI only). */
+
 function QuantityStepper({ productId, variantId }: QuantityStepperProps) {
 
   const { incrementQuantity, decrementQuantity, selections} = useBuilderStore();
 
-  const quantity = selections.find(s => s.productId == productId && s.variantId == variantId)?.quantity ?? 0;
+  const quantity = selections.find(s => s.productId === productId && (!variantId ? !s.variantId : s.variantId === variantId))?.quantity ?? 0;
 
 
   return (

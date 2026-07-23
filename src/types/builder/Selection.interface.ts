@@ -1,5 +1,5 @@
 export interface Selection {
   productId: string;
-  variantId: string;
+  variantId?: string;
   quantity: number;
 }

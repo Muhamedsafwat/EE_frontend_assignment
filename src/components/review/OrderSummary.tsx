@@ -1,18 +1,14 @@
-import { Selection } from "@/types/builder/Selection.interface";
-// import Thumbnail from "@/components/ui/Thumbnail";
-// import PriceTag from "@/components/ui/PriceTag";
+import type { ReviewItem } from "@/selectors/getReviewItems";
+import type { OrderTotals } from "@/selectors/getOrderSummary";
+import Thumbnail from "@/components/ui/Thumbnail";
+import PriceTag from "@/components/ui/PriceTag";
 import { TruckIcon } from "@/components/ui/icons";
 import { formatCurrency } from "@/lib/formatCurrency";
 
 interface OrderSummaryProps {
-  plan: Selection;
-  shipping: Selection;
-  summary: {
-    comparedAtTotal: number;
-    total: number;
-    monthly: number;
-    savings: number;
-  };
+  plan?: ReviewItem;
+  shipping?: ReviewItem;
+  summary: OrderTotals;
 }
 
 /** Decorative satisfaction-guarantee seal. */
@@ -26,56 +22,66 @@ function GuaranteeSeal() {
   );
 }
 
-// TODO: Selection now only carries ids — resolve the product from the catalog
-// and restore the commented-out thumbnails, names and prices below.
 function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
   return (
     <div className="space-y-4">
       {/* Plan */}
-      <div className="border-t border-indigo-100 pt-3">
-        <h3 className="text-xs font-medium uppercase tracking-wide text-muted">
-          Plan
-        </h3>
-        <div className="flex items-center justify-between py-2">
-          <div className="flex items-center gap-3">
-            {/* <Thumbnail src={plan.product.image} alt={plan.product.name} className="h-9 w-9" /> */}
-            <span className="text-sm font-semibold text-ink">
-              {plan.productId}
-            </span>
+      {plan && (
+        <div className="border-t border-indigo-100 pt-3">
+          <h3 className="text-xs font-medium uppercase tracking-wide text-muted">
+            Plan
+          </h3>
+          <div className="flex items-center justify-between py-2">
+            <div className="flex items-center gap-3">
+              <Thumbnail
+                src={plan.product.image}
+                alt={plan.product.name}
+                className="h-9 w-9"
+              />
+              <span className="text-sm font-semibold text-ink">
+                {plan.product.name}
+              </span>
+            </div>
+            <PriceTag
+              price={plan.product.price}
+              comparedAtPrice={plan.product.comparedAtPrice}
+              suffix="/mo"
+              variant="review"
+            />
           </div>
-          {/* <PriceTag
-            price={plan.product.price}
-            comparedAtPrice={plan.product.comparedAtPrice}
-            suffix="/mo"
-            variant="review"
-          /> */}
         </div>
-      </div>
+      )}
 
       {/* Shipping */}
-      <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
-        <div className="flex items-center gap-2 text-sm font-medium text-ink">
-          <TruckIcon className="h-5 w-5 text-wyze-purple" />
-          {shipping.productId}
+      {shipping && (
+        <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
+          <div className="flex items-center gap-2 text-sm font-medium text-ink">
+            <TruckIcon className="h-5 w-5 text-wyze-purple" />
+            {shipping.product.name}
+          </div>
+          <PriceTag
+            price={shipping.product.price}
+            comparedAtPrice={shipping.product.comparedAtPrice}
+            variant="review"
+          />
         </div>
-        {/* <PriceTag
-          price={shipping.product.price}
-          comparedAtPrice={shipping.product.comparedAtPrice}
-          variant="review"
-        /> */}
-      </div>
+      )}
 
       {/* Guarantee + total */}
       <div className="flex items-center justify-between border-t border-indigo-100 pt-4">
         <GuaranteeSeal />
         <div className="text-right">
-          <span className="mb-1 inline-block rounded-md bg-wyze-purple px-2 py-1 text-xs font-medium text-white">
-            as low as {formatCurrency(summary.monthly)}/mo
-          </span>
-          <div className="flex items-center justify-end gap-2">
-            <span className="text-sm text-muted line-through">
-              {formatCurrency(summary.comparedAtTotal)}
+          {summary.monthly > 0 && (
+            <span className="mb-1 inline-block rounded-md bg-wyze-purple px-2 py-1 text-xs font-medium text-white">
+              as low as {formatCurrency(summary.monthly)}/mo
             </span>
+          )}
+          <div className="flex items-center justify-end gap-2">
+            {summary.comparedAtTotal > summary.total && (
+              <span className="text-sm text-muted line-through">
+                {formatCurrency(summary.comparedAtTotal)}
+              </span>
+            )}
             <span className="text-2xl font-bold text-wyze-purple">
               {formatCurrency(summary.total)}
             </span>
@@ -83,9 +89,11 @@ function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
         </div>
       </div>
 
-      <p className="text-center text-sm font-medium text-wyze-purple">
-        Congrats! You're saving {formatCurrency(summary.savings)} on your security bundle!
-      </p>
+      {summary.savings > 0 && (
+        <p className="text-center text-sm font-medium text-wyze-purple">
+          Congrats! You're saving {formatCurrency(summary.savings)} on your security bundle!
+        </p>
+      )}
 
       <button
         type="button"

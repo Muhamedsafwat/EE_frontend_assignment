@@ -8,7 +8,6 @@ interface ReviewSectionProps {
 
 function ReviewSection({ title, items }: ReviewSectionProps) {
 
-  console.log(items)
   return (
     <div className="border-t border-indigo-100 pt-3">
       <h3 className="text-xs font-medium uppercase tracking-wide text-muted">

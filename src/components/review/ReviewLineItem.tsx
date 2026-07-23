@@ -15,10 +15,13 @@ function ReviewLineItem({ item }: ReviewLineItemProps) {
     <li className="flex items-center gap-3 py-3">
        <Thumbnail src={image} alt={product.name} className="h-9 w-9" /> 
       <p className="flex-1 text-sm font-medium text-ink">
-        { product.id} {variant?.id ? `(${variant?.id})` : ""}
+        { product.name} {variant?.name ? `(${variant?.name})` : ""}
          {product.isRequired && <span className="text-muted"> (Required)</span>}
       </p>
-      <QuantityStepper variantId={variant?.id || ""} productId={product.id} />
+      {
+        product.category != "plans" &&  <QuantityStepper  variantId={variant?.id} productId={product.id} />
+      }
+    
        <PriceTag
         price={product.price}
         comparedAtPrice={product.comparedAtPrice}

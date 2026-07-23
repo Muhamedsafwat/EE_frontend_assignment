@@ -11,6 +11,8 @@ export interface BuilderStore {
 
   setActiveVariant: (productId: string, variantId: string) => void;
 
-  incrementQuantity: (productId: string, variantId: string) => void;
-  decrementQuantity: (productId: string, variantId: string) => void;
+  selectPlan: (productId: string) => void;
+
+  incrementQuantity: (productId: string, variantId?: string) => void;
+  decrementQuantity: (productId: string, variantId?: string) => void;
 }
