@@ -2,7 +2,9 @@ import { create } from "zustand";
 // import types
 import type { BuilderStore } from "@/types/builder/BuilderStore.interface";
 import type { Selection } from "@/types/builder/Selection.interface";
+// import data
 import products from "@/data/products.json";
+import { seededSelections } from "@/data/seededSelections";
 
 // plan products are mutually exclusive, only one can be selected at a time
 const planIds = new Set(
@@ -14,20 +16,10 @@ const requiredIds = new Set(
   products.filter((p) => p.isRequired).map((p) => p.id),
 );
 
-// required products ship in the cart at quantity 1 from the start, defaulting
-// to their first variant so the count matches the stepper's active variant
-const requiredSelections: Selection[] = products
-  .filter((p) => p.isRequired)
-  .map((p) => ({
-    productId: p.id,
-    variantId: p.variants?.[0]?.id,
-    quantity: 1,
-  }));
-
 // initial state
 const initialState = {
   currentStep: 0,
-  selections: requiredSelections,
+  selections: seededSelections,
   activeVariants: Object.fromEntries(
     products
       .filter((p) => p.variants && p.variants.length > 0)
@@ -79,7 +71,8 @@ function changeQuantity(
   change: number,
 ): Selection[] {
   const matches = (s: Selection) =>
-    s.productId === productId && (!variantId ? !s.variantId : s.variantId === variantId);
+    s.productId === productId &&
+    (!variantId ? !s.variantId : s.variantId === variantId);
 
   const existing = selections.find(matches);
   const nextQuantity = (existing?.quantity ?? 0) + change;
