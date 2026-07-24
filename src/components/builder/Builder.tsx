@@ -12,7 +12,6 @@ function Builder({ steps }: {steps: BuilderStep[]}) {
           index={index}
           total={steps.length}
           nextStepTitle={steps[index + 1]?.title}
-          defaultOpen={index === 0}
         />
       ))}
     </section>

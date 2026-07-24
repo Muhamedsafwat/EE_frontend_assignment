@@ -9,3 +9,22 @@
   --color-icon: #6f7882;
   --color-surface: #edf4ff;
 }
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.accordion-content[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+  min-height: 0;
+}

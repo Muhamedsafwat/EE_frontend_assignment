@@ -5,13 +5,14 @@ import { ChevronDownIcon } from "@/components/ui/icons";
 import ProductGrid from "./ProductGrid";
 // types
 import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
+import { useBuilderStore } from "@/store/builder.store";
+
 interface StepAccordionItemProps {
   step: BuilderStep;
   index: number;
   total: number;
 
   nextStepTitle?: string;
-  defaultOpen?: boolean;
 }
 
 function StepAccordionItem({
@@ -19,16 +20,31 @@ function StepAccordionItem({
   index,
   total,
   nextStepTitle,
-  defaultOpen = false,
 }: StepAccordionItemProps) {
+  const currentStep = useBuilderStore((s) => s.currentStep);
+  const setCurrentStep = useBuilderStore((s) => s.setCurrentStep);
+  const nextStep = useBuilderStore((s) => s.nextStep);
+  const selections = useBuilderStore((s) => s.selections);
 
+  const isOpen = index === currentStep;
+
+  const selectedCount = selections
+    .filter((s) => step.products.some((p) => p.id === s.productId)).length
 
   return (
-    <details
-      open={defaultOpen}
-      className="group border-b border-slate-200 last:border-b-0 open:bg-surface/40"
-    >
-      <summary className="flex cursor-pointer list-none items-center gap-3 px-5 py-4 [&::-webkit-details-marker]:hidden">
+    <div className={`border-b border-slate-200 last:border-b-0 transition-colors duration-300 ${isOpen ? "bg-surface/40" : ""}`}>
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => setCurrentStep(index)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setCurrentStep(index);
+          }
+        }}
+        className="flex cursor-pointer items-center gap-3 px-5 py-4"
+      >
         <Thumbnail src={step.icon} alt="" className="h-9 w-9 bg-transparent" />
         <div className="flex-1">
           <p className="text-xs font-medium uppercase tracking-wide text-muted">
@@ -36,24 +52,39 @@ function StepAccordionItem({
           </p>
           <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
         </div>
-        <ChevronDownIcon className="h-5 w-5 text-icon transition-transform group-open:rotate-180" />
-      </summary>
-
-      <div className="px-5 pb-6">
-        <ProductGrid products={step.products} />
-
-        {nextStepTitle && (
-          <div className="mt-6 flex justify-center">
-            <button
-              type="button"
-              className="rounded-lg border border-wyze-purple px-5 py-2.5 text-sm font-semibold text-wyze-purple hover:bg-surface"
-            >
-              Next: {nextStepTitle}
-            </button>
-          </div>
+        {selectedCount > 0 && (
+          <span className="rounded-full bg-wyze-purple/10 px-2.5 py-0.5 text-xs font-semibold text-wyze-purple">
+            {selectedCount}
+          </span>
         )}
+        <ChevronDownIcon
+          className={`h-5 w-5 text-icon transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+        />
       </div>
-    </details>
+
+      <div className="accordion-content" data-open={String(isOpen)}>
+        <div>
+          <div className="px-5 pb-6">
+            <ProductGrid products={step.products} />
+
+            {nextStepTitle && (
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextStep();
+                  }}
+                  className="rounded-lg border border-wyze-purple px-5 py-2.5 text-sm font-semibold text-wyze-purple hover:bg-surface"
+                >
+                  Next: {nextStepTitle}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
