@@ -11,13 +11,14 @@ import ItemSelector from "../ui/ItemSelector";
 
 
 function ProductCard({product}: { product: Product }) {
-  const image = product.image ?? product.variants?.[0]?.image;
+  
   const savings = product.comparedAtPrice
     ? getSavingsPercent(product.comparedAtPrice, product.price)
     : 0;
 
   const {activeVariants} = useBuilderStore();
   const activeVaraint = activeVariants[product.id];
+  const image = product.variants?.find(variant => variant.id === activeVaraint)?.image ?? product.image;
 
   return (
     <div className="relative flex items-center rounded-xl border border-slate-200 bg-white p-4">

@@ -28,7 +28,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       {shipping && (
         <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
           <div className="flex items-center gap-2 text-sm font-medium text-ink">
-            <Thumbnail src="/assets/icons/delivery.svg" alt={shipping.product.name} className="h-10 w-10 p-1" />
+            <Thumbnail src="/assets/icons/delivery.svg" alt={shipping.product.name} className="h-10 w-10 p-1 bg-white" />
             {shipping.product.name}
           </div>
           <PriceTag

@@ -32,8 +32,8 @@ function StepAccordionItem({
     .filter((s) => step.products.some((p) => p.id === s.productId)).length
 
   return (
-    <div className={`border-b border-slate-200 last:border-b-0 transition-colors duration-300 px-5 py-2 ${isOpen ? "bg-surface/40" : ""}`}>
-      <p className="text-xs font-medium uppercase tracking-wide text-muted border-b py-3">
+    <div className={`transition-colors duration-300 px-5 py-2 rounded-lg ${isOpen ? "bg-surface" : ""}`}>
+      <p className="text-xs font-medium uppercase tracking-wide text-muted py-3">
         Step {index + 1} of {total}
       </p>
       <div
@@ -46,7 +46,7 @@ function StepAccordionItem({
             setCurrentStep(index);
           }
         }}
-        className="flex cursor-pointer items-center gap-3 py-4"
+        className={`flex cursor-pointer items-center gap-3 py-4 border-y border-slate-500 ${isOpen && "border-b-transparent"}`}
       >
         <Thumbnail src={step.icon} alt="" className="w-7 h-7 bg-transparent" />
         <div className="flex-1">

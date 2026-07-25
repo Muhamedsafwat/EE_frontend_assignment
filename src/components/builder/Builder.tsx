@@ -4,7 +4,7 @@ import StepAccordionItem from "./StepAccordionItem";
 
 function Builder({ steps }: {steps: BuilderStep[]}) {
   return (
-    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-surface">
+    <section className="overflow-hidden rounded-2xl h-fit sticky top-3">
       {steps.map((step, index) => (
         <StepAccordionItem
           key={step.id}
