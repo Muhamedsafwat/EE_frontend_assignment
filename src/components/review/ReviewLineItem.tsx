@@ -13,7 +13,7 @@ function ReviewLineItem({ item }: ReviewLineItemProps) {
 
   return (
     <li className="flex items-center gap-3 py-3">
-       <Thumbnail src={image} alt={product.name} className="h-9 w-9" /> 
+       <Thumbnail src={image} alt={product.name} className="h-9 w-9 bg-white" /> 
       <p className="flex-1 text-sm font-medium text-ink">
         { product.name} {variant?.name ? `(${variant?.name})` : ""}
          {product.isRequired && <span className="text-muted"> (Required)</span>}

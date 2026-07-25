@@ -20,20 +20,21 @@ function ProductCard({product}: { product: Product }) {
   const activeVaraint = activeVariants[product.id];
 
   return (
-    <div className="relative flex flex-col rounded-xl border border-slate-200 bg-white p-4">
+    <div className="relative flex items-center rounded-xl border border-slate-200 bg-white p-4">
+      {/* image and badge */}
+      <div>
       {savings > 0 && <SavingsBadge percent={savings} />}
 
-      <div className="flex gap-4">
         <Thumbnail src={image} alt={product.name} className="h-24 w-24" />
-
+      </div>
+    <div>
         <div className="flex flex-1 flex-col gap-1">
           <h4 className="font-semibold text-ink">{product.name}</h4>
-          <p className="text-sm text-ink-muted">{product.description}</p>
-          <a href="#" className="text-sm font-medium text-wyze-purple hover:underline">
+          <p className="text-sm text-ink-muted">{product.description} <a href="#" className="text-sm font-medium text-wyze-purple hover:underline">
             Learn More
-          </a>
+          </a></p>
         </div>
-      </div>
+      
 
       {product.variants && (
         <div className="mt-3">
@@ -49,6 +50,7 @@ function ProductCard({product}: { product: Product }) {
           comparedAtPrice={product.comparedAtPrice}
           variant="builder"
         />
+      </div>
       </div>
     </div>
   );

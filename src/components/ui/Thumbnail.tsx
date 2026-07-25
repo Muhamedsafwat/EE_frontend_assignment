@@ -7,17 +7,13 @@ interface ThumbnailProps {
   className?: string;
 }
 
-/**
- * Renders a product/step image, gracefully falling back to a placeholder
- * icon when no source is provided or the image fails to load.
- */
 function Thumbnail({ src, alt, className = "" }: ThumbnailProps) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(src) && !failed;
 
   return (
     <div
-      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-slate-100 ${className}`}
+      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg ${className}`}
     >
       {showImage ? (
         <img

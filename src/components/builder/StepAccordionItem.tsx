@@ -32,7 +32,10 @@ function StepAccordionItem({
     .filter((s) => step.products.some((p) => p.id === s.productId)).length
 
   return (
-    <div className={`border-b border-slate-200 last:border-b-0 transition-colors duration-300 ${isOpen ? "bg-surface/40" : ""}`}>
+    <div className={`border-b border-slate-200 last:border-b-0 transition-colors duration-300 px-5 py-2 ${isOpen ? "bg-surface/40" : ""}`}>
+      <p className="text-xs font-medium uppercase tracking-wide text-muted border-b py-3">
+        Step {index + 1} of {total}
+      </p>
       <div
         role="button"
         tabIndex={0}
@@ -43,18 +46,16 @@ function StepAccordionItem({
             setCurrentStep(index);
           }
         }}
-        className="flex cursor-pointer items-center gap-3 px-5 py-4"
+        className="flex cursor-pointer items-center gap-3 py-4"
       >
-        <Thumbnail src={step.icon} alt="" className="h-9 w-9 bg-transparent" />
+        <Thumbnail src={step.icon} alt="" className="w-7 h-7 bg-transparent" />
         <div className="flex-1">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted">
-            Step {index + 1} of {total}
-          </p>
+          
           <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
         </div>
         {selectedCount > 0 && (
-          <span className="rounded-full bg-wyze-purple/10 px-2.5 py-0.5 text-xs font-semibold text-wyze-purple">
-            {selectedCount}
+          <span className="text-wyze-purple">
+            {selectedCount} selected
           </span>
         )}
         <ChevronDownIcon
@@ -64,7 +65,7 @@ function StepAccordionItem({
 
       <div className="accordion-content" data-open={String(isOpen)}>
         <div>
-          <div className="px-5 pb-6">
+          <div className="pb-6">
             <ProductGrid products={step.products} />
 
             {nextStepTitle && (

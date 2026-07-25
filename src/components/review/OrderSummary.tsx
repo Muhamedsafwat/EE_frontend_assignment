@@ -1,9 +1,8 @@
 import type { ReviewItem } from "@/selectors/getReviewItems";
 import type { OrderTotals } from "@/selectors/getOrderSummary";
-import Thumbnail from "@/components/ui/Thumbnail";
 import PriceTag from "@/components/ui/PriceTag";
-import { TruckIcon } from "@/components/ui/icons";
 import { formatCurrency } from "@/lib/formatCurrency";
+import Thumbnail from "../ui/Thumbnail";
 
 interface OrderSummaryProps {
   plan?: ReviewItem;
@@ -22,41 +21,14 @@ function GuaranteeSeal() {
   );
 }
 
-function OrderSummary({ plan, shipping, summary }: OrderSummaryProps) {
+function OrderSummary({ shipping, summary }: OrderSummaryProps) {
   return (
     <div className="space-y-4">
-      {/* Plan */}
-      {plan && (
-        <div className="border-t border-indigo-100 pt-3">
-          <h3 className="text-xs font-medium uppercase tracking-wide text-muted">
-            Plan
-          </h3>
-          <div className="flex items-center justify-between py-2">
-            <div className="flex items-center gap-3">
-              <Thumbnail
-                src={plan.product.image}
-                alt={plan.product.name}
-                className="h-9 w-9"
-              />
-              <span className="text-sm font-semibold text-ink">
-                {plan.product.name}
-              </span>
-            </div>
-            <PriceTag
-              price={plan.product.price}
-              comparedAtPrice={plan.product.comparedAtPrice}
-              suffix="/mo"
-              variant="review"
-            />
-          </div>
-        </div>
-      )}
-
       {/* Shipping */}
       {shipping && (
         <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
           <div className="flex items-center gap-2 text-sm font-medium text-ink">
-            <TruckIcon className="h-5 w-5 text-wyze-purple" />
+            <Thumbnail src="/assets/icons/delivery.svg" alt={shipping.product.name} className="h-10 w-10 p-1" />
             {shipping.product.name}
           </div>
           <PriceTag

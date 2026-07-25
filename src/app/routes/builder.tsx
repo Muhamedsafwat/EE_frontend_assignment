@@ -8,8 +8,7 @@ import ReviewPanel from "@/components/review/ReviewPanel"
 import { shippingProductId } from "@/selectors/getReviewItems"
 
 function BuilderPage() {
-  // shipping is added to every order by the review panel, it is not something
-  // the user picks out of the accessories step
+  
   const builderSteps = getBuilderSteps(
     steps as Step[],
     (products as Product[]).filter((p) => p.id !== shippingProductId),
