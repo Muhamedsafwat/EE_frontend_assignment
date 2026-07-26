@@ -1,4 +1,4 @@
-import { ReviewItem } from "@/selectors/getReviewItems";
+import type { ReviewItem } from "@/selectors/useSelectedItems";
 import Thumbnail from "@/components/ui/Thumbnail";
 import QuantityStepper from "@/components/ui/QuantityStepper";
 import PriceTag from "@/components/ui/PriceTag";
@@ -8,23 +8,26 @@ interface ReviewLineItemProps {
 }
 
 function ReviewLineItem({ item }: ReviewLineItemProps) {
-  const { product, variant } = item;
-   const image = variant?.image ?? product.image ?? product.variants?.[0]?.image;
+  const { product, variant, quantity } = item;
+  const image = variant?.image ?? product.image ?? product.variants?.[0]?.image;
 
   return (
     <li className="flex items-center gap-3 py-3">
-       <Thumbnail src={image} alt={product.name} className="h-9 w-9 bg-white" /> 
+      <Thumbnail src={image} alt={product.name} className="h-9 w-9 bg-white" />
       <p className="flex-1 text-sm font-medium text-ink">
-        { product.name} {variant?.name ? `(${variant?.name})` : ""}
-         {product.isRequired && <span className="text-muted"> (Required)</span>}
+        {product.name} {variant?.name ? `(${variant.name})` : ""}
+        {product.isRequired && <span className="text-muted"> (Required)</span>}
       </p>
-      {
-        product.category != "plans" &&  <QuantityStepper  variantId={variant?.id} productId={product.id} />
-      }
-    
-       <PriceTag
-        price={product.price}
-        comparedAtPrice={product.comparedAtPrice}
+      {product.category !== "plans" && (
+        <QuantityStepper variantId={variant?.id} productId={product.id} />
+      )}
+      <PriceTag
+        price={product.price * quantity}
+        comparedAtPrice={
+          product.comparedAtPrice != null
+            ? product.comparedAtPrice * quantity
+            : undefined
+        }
         variant="review"
         className="w-16"
       />

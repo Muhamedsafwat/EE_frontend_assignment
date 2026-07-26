@@ -4,9 +4,6 @@ import type { Product, Variant } from "@/types/data/Product.interface";
 
 const products = productsJson as Product[];
 
-// review sections always render in this order, whatever order they were selected in
-const categoryOrder = ["cameras", "sensors", "accessories", "plans"];
-
 // shipping gets its own row in the order summary, so it is kept out of the sections
 export const shippingProductId = "fast-shipping";
 
@@ -22,7 +19,7 @@ export interface ReviewSection {
 }
 
 /** Every selection with its product and variant resolved from the catalog. */
-export function getSelectedItems(): ReviewItem[] {
+export function useSelectedItems(): ReviewItem[] {
   const selections = useBuilderStore((state) => state.selections);
 
   return selections.map((selection) => {
@@ -37,10 +34,13 @@ export function getSelectedItems(): ReviewItem[] {
   });
 }
 
-export function getReviewItems(): ReviewSection[] {
-  const items = getSelectedItems().filter(
+export function useReviewItems(): ReviewSection[] {
+  const items = useSelectedItems().filter(
     (item) => item.product.id !== shippingProductId,
   );
+
+  // review sections always render in this order, whatever order they were selected in
+  const categoryOrder = ["cameras", "sensors", "accessories", "plans"];
 
   return categoryOrder.flatMap((category) => {
     const sectionItems = items.filter((i) => i.product.category === category);
@@ -48,4 +48,10 @@ export function getReviewItems(): ReviewSection[] {
 
     return [{ title: category, items: sectionItems }];
   });
+}
+
+/** Returns only the plan selection, if any. */
+export function useSelectedPlan(): ReviewItem | undefined {
+  const items = useSelectedItems();
+  return items.find((item) => item.product.category === "plans");
 }

@@ -1,11 +1,10 @@
-import type { ReviewItem } from "@/selectors/getReviewItems";
-import type { OrderTotals } from "@/selectors/getOrderSummary";
+import type { ReviewItem } from "@/selectors/useSelectedItems";
+import type { OrderTotals } from "@/selectors/useOrderSummary";
 import PriceTag from "@/components/ui/PriceTag";
 import { formatCurrency } from "@/lib/formatCurrency";
 import Thumbnail from "../ui/Thumbnail";
 
 interface OrderSummaryProps {
-  plan?: ReviewItem;
   shipping?: ReviewItem;
   summary: OrderTotals;
 }

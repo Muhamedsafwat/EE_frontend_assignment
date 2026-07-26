@@ -107,7 +107,7 @@
     "description": "Required hub for Wyze Sense devices.",
     "comparedAtPrice": 29.92,
     "price": 0,
-    "image": "/assets/products/whyze-sense-hub/white.png",
+    "image": "/assets/products/wyze-sense-hub/white.png",
     "category": "sensors",
     "isRequired": true
   },

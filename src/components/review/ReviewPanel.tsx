@@ -1,12 +1,12 @@
 import ReviewSection from "./ReviewSection";
 import OrderSummary from "./OrderSummary";
 
-import { getReviewItems } from "@/selectors/getReviewItems";
-import { getOrderSummary } from "@/selectors/getOrderSummary";
+import { useReviewItems } from "@/selectors/useSelectedItems";
+import { useOrderSummary } from "@/selectors/useOrderSummary";
 
 function ReviewPanel() {
-  const sections = getReviewItems();
-  const { shipping, summary } = getOrderSummary();
+  const sections = useReviewItems();
+  const { shipping, summary } = useOrderSummary();
 
   return (
     <aside className="h-fit rounded-2xl bg-surface p-6 lg:sticky lg:top-8">

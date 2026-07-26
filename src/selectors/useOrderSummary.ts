@@ -1,10 +1,10 @@
 import productsJson from "@/data/products.json";
 import type { Product } from "@/types/data/Product.interface";
 import {
-  getSelectedItems,
+  useSelectedItems,
   shippingProductId,
   type ReviewItem,
-} from "./getReviewItems";
+} from "./useSelectedItems";
 
 const products = productsJson as Product[];
 
@@ -20,19 +20,17 @@ export interface OrderTotals {
 }
 
 export interface OrderSummaryData {
-  plan?: ReviewItem;
   shipping?: ReviewItem;
   summary: OrderTotals;
 }
 
-export function getOrderSummary(): OrderSummaryData {
-  const items = getSelectedItems();
+export function useOrderSummary(): OrderSummaryData {
+  const items = useSelectedItems();
 
-  const plan = items.find((item) => item.product.category === "plans");
   const shipping = shippingProduct && { product: shippingProduct, quantity: 1 };
 
   // the plan is billed monthly and shipping is free, so neither one counts
-  // towards the one off total
+  // towards the one-off total
   const hardware = items.filter(
     (item) =>
       item.product.category !== "plans" &&
@@ -46,12 +44,14 @@ export function getOrderSummary(): OrderSummaryData {
 
   const comparedAtTotal = hardware.reduce(
     (sum, item) =>
-      sum + (item.product.comparedAtPrice ?? item.product.price) * item.quantity,
+      sum +
+      (item.product.comparedAtPrice ?? item.product.price) * item.quantity,
     0,
   );
 
+  const plan = items.find((item) => item.product.category === "plans");
+
   return {
-    plan,
     shipping,
     summary: {
       comparedAtTotal,

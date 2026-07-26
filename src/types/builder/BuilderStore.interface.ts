@@ -7,7 +7,7 @@ export interface BuilderStore {
 
   setCurrentStep: (step: number) => void;
   nextStep: () => void;
-  previousStep: () => void;
+
 
   setActiveVariant: (productId: string, variantId: string) => void;
 

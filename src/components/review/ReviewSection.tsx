@@ -1,4 +1,4 @@
-import type { ReviewItem } from "@/selectors/getReviewItems";
+import type { ReviewItem } from "@/selectors/useSelectedItems";
 import ReviewLineItem from "./ReviewLineItem";
 
 interface ReviewSectionProps {

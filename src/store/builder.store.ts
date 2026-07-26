@@ -12,7 +12,8 @@ const planIds = new Set(
 );
 
 // required products can never be removed, their quantity floors at 1
-const requiredIds = new Set(
+// exported so QuantityStepper can reuse this set without recomputing it
+export const requiredIds = new Set(
   products.filter((p) => p.isRequired).map((p) => p.id),
 );
 
@@ -35,9 +36,6 @@ export const useBuilderStore = create<BuilderStore>((set) => ({
 
   nextStep: () =>
     set((state) => ({ currentStep: Math.min(state.currentStep + 1, 3) })),
-
-  previousStep: () =>
-    set((state) => ({ currentStep: Math.max(state.currentStep - 1, 0) })),
 
   setActiveVariant: (productId, variantId) =>
     set((state) => ({

@@ -1,18 +1,17 @@
-import type { Product } from "@/types/data/Product.interface"
-import type { Step } from "@/types/data/Step.interface"
-import products from "@/data/products.json"
-import steps from "@/data/steps.json"
-import { getBuilderSteps } from "@/lib/getBuilderSteps"
-import Builder from "@/components/builder/Builder"
-import ReviewPanel from "@/components/review/ReviewPanel"
-import { shippingProductId } from "@/selectors/getReviewItems"
+import type { Product } from "@/types/data/Product.interface";
+import type { Step } from "@/types/data/Step.interface";
+import products from "@/data/products.json";
+import steps from "@/data/steps.json";
+import { getBuilderSteps } from "@/lib/getBuilderSteps";
+import Builder from "@/components/builder/Builder";
+import ReviewPanel from "@/components/review/ReviewPanel";
+import { shippingProductId } from "@/selectors/useSelectedItems";
 
 function BuilderPage() {
-  
   const builderSteps = getBuilderSteps(
     steps as Step[],
     (products as Product[]).filter((p) => p.id !== shippingProductId),
-  )
+  );
 
   return (
     <main className="min-h-screen py-8">
@@ -21,7 +20,7 @@ function BuilderPage() {
         <ReviewPanel />
       </div>
     </main>
-  )
+  );
 }
 
-export default BuilderPage
+export default BuilderPage;
