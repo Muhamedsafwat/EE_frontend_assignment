@@ -1,5 +1,7 @@
-import { MinusIcon, PlusIcon } from "./icons";
-import { useBuilderStore, requiredIds } from "@/store/builder.store";
+import { MinusIcon, PlusIcon } from "@/components/ui/icons";
+import { requiredIds } from "@/catalog";
+import { useBuilderStore } from "../store/builder.store";
+import { selectQuantity } from "../store/selectors";
 
 interface QuantityStepperProps {
   productId: string;
@@ -7,13 +9,9 @@ interface QuantityStepperProps {
 }
 
 function QuantityStepper({ productId, variantId }: QuantityStepperProps) {
-  const { incrementQuantity, decrementQuantity, selections } = useBuilderStore();
-
-  const quantity = selections.find(
-    (s) =>
-      s.productId === productId &&
-      (!variantId ? !s.variantId : s.variantId === variantId),
-  )?.quantity ?? 0;
+  const quantity = useBuilderStore(selectQuantity(productId, variantId));
+  const incrementQuantity = useBuilderStore((s) => s.incrementQuantity);
+  const decrementQuantity = useBuilderStore((s) => s.decrementQuantity);
 
   const isRequired = requiredIds.has(productId);
 

@@ -1,8 +1,7 @@
-import ReviewSection from "./ReviewSection";
+import { useOrderSummary } from "../hooks/useOrderSummary";
+import { useReviewItems } from "../hooks/useReviewItems";
 import OrderSummary from "./OrderSummary";
-
-import { useReviewItems } from "@/selectors/useSelectedItems";
-import { useOrderSummary } from "@/selectors/useOrderSummary";
+import ReviewSection from "./ReviewSection";
 
 function ReviewPanel() {
   const sections = useReviewItems();
@@ -13,17 +12,15 @@ function ReviewPanel() {
       <p className="text-xs font-medium uppercase tracking-wide text-muted">
         Review
       </p>
-      <h2 className="mt-1 text-2xl font-bold text-ink">
-        Your security system
-      </h2>
+      <h2 className="mt-1 text-2xl font-bold text-ink">Your security system</h2>
       <p className="mt-2 text-sm text-ink-muted">
         Review your personalized protection system designed to keep what matters
         most safe.
       </p>
-       <div className="mt-6 space-y-4">
+      <div className="mt-6 space-y-4">
         {sections.map((section) => (
           <ReviewSection
-            key={section.title}
+            key={section.category}
             title={section.title}
             items={section.items}
           />

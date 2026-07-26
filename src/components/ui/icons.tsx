@@ -35,17 +35,6 @@ export function PlusIcon({ className }: IconProps) {
   );
 }
 
-export function TruckIcon({ className }: IconProps) {
-  return (
-    <svg {...baseProps} className={className} aria-hidden="true">
-      <path d="M10 17h4V5H2v12h3" />
-      <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1" />
-      <circle cx="7.5" cy="17.5" r="1.5" />
-      <circle cx="17.5" cy="17.5" r="1.5" />
-    </svg>
-  );
-}
-
 export function ImageIcon({ className }: IconProps) {
   return (
     <svg {...baseProps} className={className} aria-hidden="true">

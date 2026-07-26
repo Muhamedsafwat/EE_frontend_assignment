@@ -1,23 +1,13 @@
-import type { ReviewItem } from "@/selectors/useSelectedItems";
-import type { OrderTotals } from "@/selectors/useOrderSummary";
 import PriceTag from "@/components/ui/PriceTag";
+import Thumbnail from "@/components/ui/Thumbnail";
+import GuaranteeSeal from "@/components/ui/GuaranteeSeal";
 import { formatCurrency } from "@/lib/formatCurrency";
-import Thumbnail from "../ui/Thumbnail";
+import type { OrderTotals } from "@/catalog/pricing";
+import type { ReviewItem } from "../types/ReviewItem.interface";
 
 interface OrderSummaryProps {
   shipping?: ReviewItem;
   summary: OrderTotals;
-}
-
-/** Decorative satisfaction-guarantee seal. */
-function GuaranteeSeal() {
-  return (
-    <img
-      src="/assets/badges/satisfaction_badge.png"
-      alt="100% Satisfaction Guarantee"
-      className="h-16 w-16"
-    />
-  );
 }
 
 function OrderSummary({ shipping, summary }: OrderSummaryProps) {
@@ -27,7 +17,11 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       {shipping && (
         <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
           <div className="flex items-center gap-2 text-sm font-medium text-ink">
-            <Thumbnail src="/assets/icons/delivery.svg" alt={shipping.product.name} className="h-10 w-10 p-1 bg-white" />
+            <Thumbnail
+              src="/assets/icons/delivery.svg"
+              alt={shipping.product.name}
+              className="h-10 w-10 p-1 bg-white"
+            />
             {shipping.product.name}
           </div>
           <PriceTag
@@ -62,7 +56,8 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
 
       {summary.savings > 0 && (
         <p className="text-center text-sm font-medium text-wyze-purple">
-          Congrats! You're saving {formatCurrency(summary.savings)} on your security bundle!
+          Congrats! You're saving {formatCurrency(summary.savings)} on your
+          security bundle!
         </p>
       )}
 

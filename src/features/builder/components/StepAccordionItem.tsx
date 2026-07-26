@@ -1,17 +1,14 @@
-
-//components
 import Thumbnail from "@/components/ui/Thumbnail";
 import { ChevronDownIcon } from "@/components/ui/icons";
+import type { BuilderStep } from "@/types/Step.interface";
+import { useBuilderStore } from "../store/builder.store";
+import { selectStepSelectionCount } from "../store/selectors";
 import ProductGrid from "./ProductGrid";
-// types
-import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
-import { useBuilderStore } from "@/store/builder.store";
 
 interface StepAccordionItemProps {
   step: BuilderStep;
   index: number;
   total: number;
-
   nextStepTitle?: string;
 }
 
@@ -24,15 +21,14 @@ function StepAccordionItem({
   const currentStep = useBuilderStore((s) => s.currentStep);
   const setCurrentStep = useBuilderStore((s) => s.setCurrentStep);
   const nextStep = useBuilderStore((s) => s.nextStep);
-  const selections = useBuilderStore((s) => s.selections);
+  const selectedCount = useBuilderStore(selectStepSelectionCount(step));
 
   const isOpen = index === currentStep;
 
-  const selectedCount = selections
-    .filter((s) => step.products.some((p) => p.id === s.productId)).length
-
   return (
-    <div className={`transition-colors duration-300 px-5 py-2 rounded-lg ${isOpen ? "bg-surface" : ""}`}>
+    <div
+      className={`transition-colors duration-300 px-5 py-2 rounded-lg ${isOpen ? "bg-surface" : ""}`}
+    >
       <p className="text-xs font-medium uppercase tracking-wide text-muted py-3">
         Step {index + 1} of {total}
       </p>
@@ -50,13 +46,10 @@ function StepAccordionItem({
       >
         <Thumbnail src={step.icon} alt="" className="w-7 h-7 bg-transparent" />
         <div className="flex-1">
-          
           <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
         </div>
         {selectedCount > 0 && (
-          <span className="text-wyze-purple">
-            {selectedCount} selected
-          </span>
+          <span className="text-wyze-purple">{selectedCount} selected</span>
         )}
         <ChevronDownIcon
           className={`h-5 w-5 text-icon transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}

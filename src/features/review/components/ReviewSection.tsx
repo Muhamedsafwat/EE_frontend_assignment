@@ -1,4 +1,4 @@
-import type { ReviewItem } from "@/selectors/useSelectedItems";
+import type { ReviewItem } from "../types/ReviewItem.interface";
 import ReviewLineItem from "./ReviewLineItem";
 
 interface ReviewSectionProps {
@@ -7,7 +7,6 @@ interface ReviewSectionProps {
 }
 
 function ReviewSection({ title, items }: ReviewSectionProps) {
-
   return (
     <div className="border-t border-indigo-100 pt-3">
       <h3 className="text-xs font-medium uppercase tracking-wide text-muted">

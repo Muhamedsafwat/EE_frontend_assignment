@@ -1,15 +1,17 @@
-import type { ReviewItem } from "@/selectors/useSelectedItems";
 import Thumbnail from "@/components/ui/Thumbnail";
-import QuantityStepper from "@/components/ui/QuantityStepper";
 import PriceTag from "@/components/ui/PriceTag";
+import { resolveProductImage } from "@/catalog/resolveProductImage";
+import { lineComparedAtTotal, lineTotal } from "@/catalog/pricing";
+import QuantityStepper from "@/features/builder/components/QuantityStepper";
+import type { ReviewItem } from "../types/ReviewItem.interface";
 
 interface ReviewLineItemProps {
   item: ReviewItem;
 }
 
 function ReviewLineItem({ item }: ReviewLineItemProps) {
-  const { product, variant, quantity } = item;
-  const image = variant?.image ?? product.image ?? product.variants?.[0]?.image;
+  const { product, variant } = item;
+  const image = resolveProductImage(product, variant?.id);
 
   return (
     <li className="flex items-center gap-3 py-3">
@@ -22,11 +24,9 @@ function ReviewLineItem({ item }: ReviewLineItemProps) {
         <QuantityStepper variantId={variant?.id} productId={product.id} />
       )}
       <PriceTag
-        price={product.price * quantity}
+        price={lineTotal(item)}
         comparedAtPrice={
-          product.comparedAtPrice != null
-            ? product.comparedAtPrice * quantity
-            : undefined
+          product.comparedAtPrice != null ? lineComparedAtTotal(item) : undefined
         }
         variant="review"
         className="w-16"

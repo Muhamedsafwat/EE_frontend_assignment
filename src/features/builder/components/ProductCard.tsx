@@ -1,23 +1,22 @@
-import type { Product } from "@/types/data/Product.interface";
 import Thumbnail from "@/components/ui/Thumbnail";
 import PriceTag from "@/components/ui/PriceTag";
 import SavingsBadge from "@/components/ui/SavingsBadge";
-import QuantityStepper from "@/components/ui/QuantityStepper";
-import { getSavingsPercent } from "@/lib/formatCurrency";
+import { getSavingsPercent } from "@/catalog/pricing";
+import { resolveProductImage } from "@/catalog/resolveProductImage";
+import type { Product } from "@/types/Product.interface";
+import { useBuilderStore } from "../store/builder.store";
+import { selectActiveVariant } from "../store/selectors";
+import ItemSelector from "./ItemSelector";
+import QuantityStepper from "./QuantityStepper";
 import VariantSelector from "./VariantSelector";
-import { useBuilderStore } from "@/store/builder.store";
-import ItemSelector from "../ui/ItemSelector";
 
 function ProductCard({ product }: { product: Product }) {
   const savings = product.comparedAtPrice
     ? getSavingsPercent(product.comparedAtPrice, product.price)
     : 0;
 
-  const { activeVariants } = useBuilderStore();
-  const activeVariant = activeVariants[product.id];
-  const image =
-    product.variants?.find((variant) => variant.id === activeVariant)?.image ??
-    product.image;
+  const activeVariant = useBuilderStore(selectActiveVariant(product.id));
+  const image = resolveProductImage(product, activeVariant);
 
   return (
     <div className="relative flex items-center rounded-xl border border-slate-200 bg-white p-4">
@@ -43,7 +42,10 @@ function ProductCard({ product }: { product: Product }) {
 
         {product.variants && (
           <div className="mt-3">
-            <VariantSelector variants={product.variants} productId={product.id} />
+            <VariantSelector
+              variants={product.variants}
+              productId={product.id}
+            />
           </div>
         )}
 

@@ -1,4 +1,4 @@
-import { Selection } from "./Selection.interface";
+import type { Selection } from "./Selection.interface";
 
 export interface BuilderStore {
   currentStep: number;
@@ -8,11 +8,13 @@ export interface BuilderStore {
   setCurrentStep: (step: number) => void;
   nextStep: () => void;
 
-
   setActiveVariant: (productId: string, variantId: string) => void;
 
+  /** Plans are mutually exclusive and mandatory — this swaps, it never removes. */
   selectPlan: (productId: string) => void;
 
   incrementQuantity: (productId: string, variantId?: string) => void;
   decrementQuantity: (productId: string, variantId?: string) => void;
+
+  reset: () => void;
 }

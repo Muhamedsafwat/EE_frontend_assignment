@@ -1,14 +1,12 @@
-import { useBuilderStore } from "@/store/builder.store";
+import { useBuilderStore } from "../store/builder.store";
+import { selectIsSelected } from "../store/selectors";
 
 interface ItemSelectorProps {
   productId: string;
 }
 
 function ItemSelector({ productId }: ItemSelectorProps) {
-  const isSelected = useBuilderStore((state) =>
-    state.selections.some((s) => s.productId === productId)
-  );
-
+  const isSelected = useBuilderStore(selectIsSelected(productId));
   const selectPlan = useBuilderStore((state) => state.selectPlan);
 
   return (

@@ -1,8 +1,11 @@
-import type { BuilderStep } from "@/types/builder/BuilderStep.interface";
+import type { BuilderStep } from "@/types/Step.interface";
 import StepAccordionItem from "./StepAccordionItem";
 
+interface BuilderProps {
+  steps: BuilderStep[];
+}
 
-function Builder({ steps }: {steps: BuilderStep[]}) {
+function Builder({ steps }: BuilderProps) {
   return (
     <section className="overflow-hidden rounded-2xl h-fit sticky top-3">
       {steps.map((step, index) => (
