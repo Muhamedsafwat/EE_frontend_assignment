@@ -56,7 +56,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       </div>
 
       {summary.savings > 0 && (
-        <p className="text-center text-sm font-medium text-wyze-purple">
+        <p className="type-savings text-center">
           Congrats! You're saving {formatCurrency(summary.savings)} on your
           security bundle!
         </p>

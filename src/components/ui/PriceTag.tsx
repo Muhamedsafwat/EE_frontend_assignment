@@ -11,10 +11,14 @@ interface PriceTagProps {
   className?: string;
 }
 
-const toneByVariant: Record<PriceVariant, { compared: string; price: string }> = {
-  builder: { compared: "text-sale/60", price: "text-sale" },
-  review: { compared: "text-muted", price: "text-wyze-purple" },
-};
+const styleByVariant: Record<PriceVariant, { compared: string; price: string }> =
+  {
+    builder: { compared: "type-price-compared", price: "type-price" },
+    review: {
+      compared: "type-review-price-compared line-through",
+      price: "type-review-price",
+    },
+  };
 
 function PriceTag({
   price,
@@ -23,18 +27,18 @@ function PriceTag({
   variant = "builder",
   className = "",
 }: PriceTagProps) {
-  const tone = toneByVariant[variant];
+  const style = styleByVariant[variant];
   const isFree = price === 0;
 
   return (
     <div className={`text-right leading-tight ${className}`}>
       {comparedAtPrice != null && (
-        <div className={`text-xs line-through ${tone.compared}`}>
+        <div className={style.compared}>
           {formatCurrency(comparedAtPrice)}
           {suffix}
         </div>
       )}
-      <div className={`text-sm font-semibold text-ink`}>
+      <div className={style.price}>
         {isFree ? "FREE" : `${formatCurrency(price)}${suffix}`}
       </div>
     </div>

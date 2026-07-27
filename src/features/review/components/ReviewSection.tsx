@@ -9,9 +9,7 @@ interface ReviewSectionProps {
 function ReviewSection({ title, items }: ReviewSectionProps) {
   return (
     <div className="border-t border-indigo-100 pt-3">
-      <h3 className="text-xs font-medium uppercase tracking-wide text-muted">
-        {title}
-      </h3>
+      <h3 className="type-category-title">{title}</h3>
       <ul>
         {items.map((item) => (
           <ReviewLineItem

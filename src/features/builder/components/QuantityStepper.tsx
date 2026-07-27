@@ -6,9 +6,10 @@ import { selectQuantity } from "../store/selectors";
 interface QuantityStepperProps {
   productId: string;
   variantId?: string;
+  styleVariant: 'builder' | 'review'
 }
 
-function QuantityStepper({ productId, variantId }: QuantityStepperProps) {
+function QuantityStepper({ productId, variantId, styleVariant }: QuantityStepperProps) {
   const quantity = useBuilderStore(selectQuantity(productId, variantId));
   const incrementQuantity = useBuilderStore((s) => s.incrementQuantity);
   const decrementQuantity = useBuilderStore((s) => s.decrementQuantity);
@@ -20,9 +21,9 @@ function QuantityStepper({ productId, variantId }: QuantityStepperProps) {
       <button
         type="button"
         onClick={() => decrementQuantity(productId, variantId)}
-        disabled={isRequired}
+        disabled={isRequired || quantity == 0}
         aria-label="Decrease quantity"
-        className="p-1 rounded-sm text-ink-muted disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-icon bg-[#F0F4F7]"
+        className={`p-1 rounded-sm text-ink-muted border-2 disabled:cursor-not-allowed ${styleVariant === "builder" ? "bg-[#E6EBF0]  border-[#E6EBF0]  disabled:bg-white disabled:text-[#E6EBF0]" : " bg-white border-white disabled:bg-[#E6EBF0] disabled:border-[#CED6DE]"} `}
       >
         <MinusIcon className="h-3 w-3" />
       </button>
@@ -31,7 +32,7 @@ function QuantityStepper({ productId, variantId }: QuantityStepperProps) {
         type="button"
         aria-label="Increase quantity"
         onClick={() => incrementQuantity(productId, variantId)}
-        className="p-1 rounded-sm text-ink-muted bg-[#F0F4F7]"
+        className={`p-1 rounded-sm text-ink-muted border-2 disabled:cursor-not-allowed ${styleVariant === "builder" ? "bg-[#E6EBF0]  border-[#E6EBF0]  disabled:bg-white disabled:text-[#E6EBF0]" : " bg-white border-white disabled:bg-[#E6EBF0] disabled:border-[#CED6DE]"} `}
       >
         <PlusIcon className="h-3 w-3" />
       </button>

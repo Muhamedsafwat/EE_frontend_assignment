@@ -28,13 +28,10 @@ function ProductCard({ product }: { product: Product }) {
 
       <div>
         <div className="flex flex-1 flex-col gap-1">
-          <h4 className="font-semibold text-ink">{product.name}</h4>
-          <p className="text-sm text-ink-muted">
+          <h4 className="type-product-title">{product.name}</h4>
+          <p className="type-product-desc">
             {product.description}{" "}
-            <a
-              href="#"
-              className="text-sm font-medium text-wyze-purple hover:underline"
-            >
+            <a href="#" className="type-inline-link">
               Learn More
             </a>
           </p>
@@ -53,7 +50,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.category === "plans" ? (
             <ItemSelector productId={product.id} />
           ) : (
-            <QuantityStepper productId={product.id} variantId={activeVariant} />
+            <QuantityStepper styleVariant="builder" productId={product.id} variantId={activeVariant} />
           )}
           <PriceTag
             price={product.price}

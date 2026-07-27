@@ -19,10 +19,8 @@ function VariantSelector({ variants, productId }: VariantSelectorProps) {
           onClick={() => setActiveVariant(productId, variant.id)}
           key={variant.id}
           type="button"
-          className={`inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs ${
-            activeVariant === variant.id
-              ? "border-green-600 text-ink"
-              : "border-slate-200 text-ink-muted"
+          className={`type-variant-title inline-flex items-center gap-1.5 rounded-md border px-2 py-1 ${
+            activeVariant === variant.id ? "border-green-600" : "border-slate-200"
           }`}
         >
           <Thumbnail
