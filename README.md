@@ -1,70 +1,161 @@
-# Getting Started with Create React App
+# Security System Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React implementation of the provided Figma design for building a customizable home security system.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- React 19
+- TypeScript
+- Vite
+- Zustand
+- Tailwind CSS v4
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install dependencies:
 
-### `npm test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the development server:
 
-### `npm run build`
+```bash
+npm run dev
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── app/            # Router and page layout
+├── catalog/        # DOMAIN layer: product data, rules and pricing
+├── components/ui/  # Shared UI components
+├── features/
+│   ├── builder/    # The wizard: store, components, types
+│   └── review/     # The summary panel: hooks, components, types
+├── lib/            # Generic helpers (localStorage, currency)
+├── types/          # Shared shapes (Product, Step)
+└── assets/         # Self-hosted fonts
+```
 
-### `npm run eject`
+The project is organized by feature, while the catalog is separated from the UI and contains product-related logic and data.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Each feature owns its own state, hooks, components and types.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Catalog
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The catalog acts as the source of truth for products.
 
-## Learn More
+It is responsible for:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Loading product data
+- Looking up products by id
+- Calculating prices and order totals
+- Deriving the sets the rules depend on: plans, required products, builder steps
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This keeps business logic outside React components and avoids repeating the same logic across the application. The catalog contains no React code.
 
-### Code Splitting
+Review items are built by the review feature's hooks, which resolve each selection against the catalog.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## State Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Zustand is used because both the builder and the review panel depend on the same state.
 
-### Making a Progressive Web App
+The store contains:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Current builder step
+- Selected products
+- Active variants
+- Builder actions
 
-### Advanced Configuration
+The review panel reads directly from the store instead of keeping its own state.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Product Selections
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Selections only store the minimum required information:
 
-### `npm run build` fails to minify
+- Product id
+- Variant id (if applicable)
+- Quantity
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Any additional product information is retrieved from the catalog when needed.
+
+---
+
+## Variants
+
+Each variant keeps its own quantity.
+
+Changing the selected variant only changes which quantity the stepper controls.
+
+---
+
+## Plans
+
+Plans are treated differently from quantity-based products.
+
+A plan is mandatory and only one can be selected at a time, so selecting another plan replaces the current one. There is no deselect, and the button on the selected plan is disabled instead.
+
+---
+
+## Required Products
+
+Some products are marked as required and cannot be removed. Their quantity stops at 1 instead of dropping to zero.
+
+Every other product leaves the order once its quantity reaches zero, so a zero-quantity line never exists.
+
+---
+
+## Shipping
+
+Fast shipping is included with every order, so it is never shown as a selectable product.
+
+It is read from the catalog and rendered as its own row in the summary, above the total.
+
+---
+
+## Review Ordering
+
+The review panel groups selections by category in its own order, which is not the order of the wizard.
+
+The wizard asks for the plan third, while the review panel lists it last. Empty categories are not rendered.
+
+---
+
+## Data
+
+Products and builder steps are loaded from local JSON files in `src/catalog/`, making the UI fully data-driven.
+
+---
+
+## Persistence
+
+The **Save my system for later** action stores the current selections in `localStorage`.
+
+When the page is opened again the saved selections are restored, after being validated against the catalog. Entries with an unknown product, an invalid quantity or a variant that no longer exists are dropped, and if the remaining order has no plan the whole save is discarded, since a plan is mandatory.
+
+The current step is not stored, and active variants are derived from the restored selections.
+
+---
+
+## Default System
+
+A first visit starts on a seeded starter system rather than an empty builder. A saved system takes precedence when one exists.
+
+---
+
+## Notes
+
+- Checkout is a placeholder.
+- No backend was implemented since it was optional for the task.
