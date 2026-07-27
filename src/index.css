@@ -127,7 +127,7 @@
   }
 
   .type-review-price {
-    @apply text-sm font-semibold leading-4 text-wyze-purple;
+    @apply text-sm font-medium leading-4 text-wyze-purple;
   }
 
   /* Review panel — savings line under the total */

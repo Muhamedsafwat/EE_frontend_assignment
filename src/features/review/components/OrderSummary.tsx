@@ -34,7 +34,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       )}
 
       {/* Guarantee + total */}
-      <div className="flex items-center justify-between border-t border-indigo-100 pt-4">
+      <div className="flex items-center justify-between">
         <GuaranteeSeal />
         <div className="text-right">
           {summary.monthly > 0 && (
@@ -44,7 +44,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
           )}
           <div className="flex items-center justify-end gap-2">
             {summary.comparedAtTotal > summary.total && (
-              <span className="text-sm text-muted line-through">
+              <span className="text-xl text-muted line-through">
                 {formatCurrency(summary.comparedAtTotal)}
               </span>
             )}
