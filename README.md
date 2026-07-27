@@ -159,3 +159,5 @@ A first visit starts on a seeded starter system rather than an empty builder. A 
 
 - Checkout is a placeholder.
 - No backend was implemented since it was optional for the task.
+- Not all font weights are used as the font package I found didn't contain "semibold"
+- Lighthouse gives a warning about image sizes, in a real case scenario, I'd use different images for thumbnails or Next/Image.

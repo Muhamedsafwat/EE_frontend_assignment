@@ -10,17 +10,17 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/assets/products/wyze-cam-v4/white.png"
+        "image": "/assets/products/wyze-cam-v4/white.webp"
       },
       {
         "id": "grey",
         "name": "Grey",
-        "image": "/assets/products/wyze-cam-v4/grey.png"
+        "image": "/assets/products/wyze-cam-v4/grey.webp"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/assets/products/wyze-cam-v4/black.png"
+        "image": "/assets/products/wyze-cam-v4/black.webp"
       }
     ]
   },
@@ -35,12 +35,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/assets/products/wyze-cam-pan-v3/white.png"
+        "image": "/assets/products/wyze-cam-pan-v3/white.webp"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/assets/products/wyze-cam-pan-v3/black.png"
+        "image": "/assets/products/wyze-cam-pan-v3/black.webp"
       }
     ]
   },
@@ -55,12 +55,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/assets/products/wyze-cam-floodlight-v2/white.png"
+        "image": "/assets/products/wyze-cam-floodlight-v2/white.webp"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/assets/products/wyze-cam-floodlight-v2/black.png"
+        "image": "/assets/products/wyze-cam-floodlight-v2/black.webp"
       }
     ]
   },
@@ -69,7 +69,7 @@
     "name": "Wyze Duo Cam Doorbell",
     "description": "Two cameras. Two views. Double the protection.",
     "price": 69.98,
-    "image": "/assets/products/wyze-duo-cam-doorbell/default.png",
+    "image": "/assets/products/wyze-duo-cam-doorbell/default.webp",
     "category": "cameras"
   },
   {
@@ -82,12 +82,12 @@
       {
         "id": "white",
         "name": "White",
-        "image": "/assets/products/wyze-battery-cam-pro/white.png"
+        "image": "/assets/products/wyze-battery-cam-pro/white.webp"
       },
       {
         "id": "black",
         "name": "Black",
-        "image": "/assets/products/wyze-battery-cam-pro/black.png"
+        "image": "/assets/products/wyze-battery-cam-pro/black.webp"
       }
     ]
   },
@@ -98,7 +98,7 @@
     "description": "Detects movement inside your home.",
     "comparedAtPrice": 39.98,
     "price": 29.99,
-    "image": "/assets/products/wyze-sense-motion-sensor/white.png",
+    "image": "/assets/products/wyze-sense-motion-sensor/white.webp",
     "category": "sensors"
   },
   {
@@ -107,7 +107,7 @@
     "description": "Required hub for Wyze Sense devices.",
     "comparedAtPrice": 29.92,
     "price": 0,
-    "image": "/assets/products/wyze-sense-hub/white.png",
+    "image": "/assets/products/wyze-sense-hub/white.webp",
     "category": "sensors",
     "isRequired": true
   },
@@ -117,7 +117,7 @@
     "description": "Know when doors and windows open.",
     "comparedAtPrice": 24.99,
     "price": 19.99,
-    "image": "",
+    "image": "/assets/products/wyze-sense-motion-sensor/white.webp",
     "category": "sensors"
   },
   {
@@ -126,7 +126,7 @@
     "description": "Monitors temperature and humidity.",
     "comparedAtPrice": 34.99,
     "price": 27.99,
-    "image": "/images/sensors/climate.png",
+    "image": "/assets/products/wyze-sense-motion-sensor/white.webp",
     "category": "sensors"
   },
   {
@@ -135,7 +135,7 @@
     "description": "Alerts you when water is detected.",
     "comparedAtPrice": 29.99,
     "price": 22.99,
-    "image": "/images/sensors/leak.png",
+    "image": "/assets/products/wyze-sense-motion-sensor/white.webp",
     "category": "sensors"
   },
   
@@ -155,7 +155,7 @@
     "description": "AI events and cloud recording.",
     "comparedAtPrice": 7.99,
     "price": 4.99,
-    "image": "/images/plans/plus.png",
+    "image": "/assets/products/cam-unlimited-plan/default.svg",
     "category": "plans"
   },
   {
@@ -163,7 +163,7 @@
     "name": "Cam Lite",
     "description": "Basic cloud recording plan.",
     "price": 2.99,
-    "image": "/images/plans/lite.png",
+    "image": "/assets/products/cam-unlimited-plan/default.svg",
     "category": "plans"
   },
 
@@ -172,7 +172,7 @@
     "name": "Wyze MicroSD Card (256GB)",
     "description": "Continuous local recording.",
     "price": 41.96,
-    "image": "/assets/products/wyze-sd-card/default.png",
+    "image": "/assets/products/wyze-sd-card/default.webp",
     "category": "accessories"
   },
   {
@@ -181,23 +181,7 @@
     "description": "Keep compatible cameras charged.",
     "comparedAtPrice": 39.99,
     "price": 29.99,
-    "image": "/images/accessories/solar-panel.png",
-    "category": "accessories"
-  },
-  {
-    "id": "mount-kit",
-    "name": "Wyze Mounting Kit",
-    "description": "Indoor and outdoor mounting hardware.",
-    "price": 14.99,
-    "image": "/images/accessories/mount-kit.png",
-    "category": "accessories"
-  },
-  {
-    "id": "usb-extension",
-    "name": "USB Power Extension Cable",
-    "description": "Extended reach for camera placement.",
-    "price": 9.99,
-    "image": "/images/accessories/extension-cable.png",
+    "image": "/assets/products/solar-panel/default.webp",
     "category": "accessories"
   },
   {
@@ -206,7 +190,6 @@
     "description": "Priority shipping for your order.",
     "comparedAtPrice": 5.99,
     "price": 0,
-    "image": "/images/accessories/shipping.png",
     "category": "accessories"
   }
 ]
