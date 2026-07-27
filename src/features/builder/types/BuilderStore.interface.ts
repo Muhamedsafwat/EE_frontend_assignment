@@ -16,5 +16,6 @@ export interface BuilderStore {
   incrementQuantity: (productId: string, variantId?: string) => void;
   decrementQuantity: (productId: string, variantId?: string) => void;
 
-  reset: () => void;
+  /** Persists the order for the next visit. Returns whether it was stored. */
+  saveSystem: () => boolean;
 }

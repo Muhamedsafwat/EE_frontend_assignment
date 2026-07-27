@@ -7,7 +7,7 @@ interface BuilderProps {
 
 function Builder({ steps }: BuilderProps) {
   return (
-    <section className="overflow-hidden rounded-2xl h-fit sticky top-3">
+    <section className="overflow-hidden rounded-2xl h-fit lg:sticky lg:top-3">
       {steps.map((step, index) => (
         <StepAccordionItem
           key={step.id}

@@ -4,6 +4,7 @@ import GuaranteeSeal from "@/components/ui/GuaranteeSeal";
 import { formatCurrency } from "@/lib/formatCurrency";
 import type { OrderTotals } from "@/catalog/pricing";
 import type { ReviewItem } from "../types/ReviewItem.interface";
+import SaveSystemButton from "./SaveSystemButton";
 
 interface OrderSummaryProps {
   shipping?: ReviewItem;
@@ -67,12 +68,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       >
         Checkout
       </button>
-      <button
-        type="button"
-        className="w-full text-center text-sm italic text-ink-muted underline hover:text-ink"
-      >
-        Save my system for later
-      </button>
+      <SaveSystemButton />
     </div>
   );
 }

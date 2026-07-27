@@ -1,21 +1,33 @@
 import { create } from "zustand";
-import { builderSteps, defaultVariantByProduct, planIds, requiredIds } from "@/catalog";
+import {
+  builderSteps,
+  defaultVariantByProduct,
+  planIds,
+  requiredIds,
+} from "@/catalog";
 import type { BuilderStore } from "../types/BuilderStore.interface";
 import type { Selection } from "../types/Selection.interface";
+import { readSavedSystem, writeSavedSystem } from "./savedSystem";
 import { seededSelections } from "./seededSelections";
 import { matchesSelection } from "./selectors";
 
-// derived from the step list rather than hardcoded, so adding a step to
-// steps.json keeps the wizard walkable to the end
+// Constant
 const lastStepIndex = Math.max(builderSteps.length - 1, 0);
 
-const initialState = {
-  currentStep: 0,
-  selections: seededSelections,
-  activeVariants: { ...defaultVariantByProduct },
-};
+// Build the store from a starting state
+function stateFrom(selections: Selection[]) {
+  const activeVariants = { ...defaultVariantByProduct };
+  for (const { productId, variantId } of selections)
+    if (variantId) activeVariants[productId] = variantId;
 
-export const useBuilderStore = create<BuilderStore>((set) => ({
+  return { currentStep: 0, selections, activeVariants };
+}
+
+// use the saved system if available else use the seeded system
+const initialState = stateFrom(readSavedSystem() ?? seededSelections);
+
+// the actual store
+export const useBuilderStore = create<BuilderStore>((set, get) => ({
   ...initialState,
 
   setCurrentStep: (step) =>
@@ -50,15 +62,10 @@ export const useBuilderStore = create<BuilderStore>((set) => ({
       selections: changeQuantity(state.selections, productId, variantId, -1),
     })),
 
-  reset: () => set(initialState),
+  saveSystem: () => writeSavedSystem(get().selections),
 }));
 
-/**
- * Applies a quantity delta to one selection line.
- *
- * Lines are keyed by product *and* variant, so picking a different colour of a
- * product already in the order adds a separate line rather than reusing it.
- */
+// generic change quantity, applies a difference rather than increment / decrement functions
 function changeQuantity(
   selections: Selection[],
   productId: string,
@@ -70,8 +77,7 @@ function changeQuantity(
   const existing = selections.find(matches);
   const nextQuantity = (existing?.quantity ?? 0) + change;
 
-  // below 1, required products hold at their current quantity, everything
-  // else drops out of the selections
+  // below 1, required products hold at their current quantity, everything else drops out of the selections
   if (nextQuantity < 1)
     return requiredIds.has(productId)
       ? selections
