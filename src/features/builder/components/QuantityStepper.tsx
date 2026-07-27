@@ -31,6 +31,7 @@ function QuantityStepper({ productId, variantId, styleVariant }: QuantityStepper
       <button
         type="button"
         aria-label="Increase quantity"
+        disabled={isRequired}
         onClick={() => incrementQuantity(productId, variantId)}
         className={`p-1 rounded-sm text-ink-muted border-2 disabled:cursor-not-allowed ${styleVariant === "builder" ? "bg-[#E6EBF0]  border-[#E6EBF0]  disabled:bg-white disabled:text-[#E6EBF0]" : " bg-white border-white disabled:bg-[#E6EBF0] disabled:border-[#CED6DE]"} `}
       >
