@@ -13,7 +13,7 @@ interface OrderSummaryProps {
 
 function OrderSummary({ shipping, summary }: OrderSummaryProps) {
   return (
-    <div className="space-y-4">
+    <div>
       {/* Shipping */}
       {shipping && (
         <div className="flex items-center justify-between border-t border-indigo-100 pt-3">
@@ -34,7 +34,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
       )}
 
       {/* Guarantee + total */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between my-3">
         <GuaranteeSeal />
         <div className="text-right">
           {summary.monthly > 0 && (
@@ -64,7 +64,7 @@ function OrderSummary({ shipping, summary }: OrderSummaryProps) {
 
       <button
         type="button"
-        className="w-full rounded-lg bg-wyze-purple py-3 text-base font-semibold text-white hover:bg-wyze-purple/90"
+        className="w-full my-2 rounded-lg bg-wyze-purple py-3 text-base font-semibold text-white hover:bg-wyze-purple/90"
       >
         Checkout
       </button>

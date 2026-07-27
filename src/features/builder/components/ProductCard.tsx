@@ -5,7 +5,7 @@ import { getSavingsPercent } from "@/catalog/pricing";
 import { resolveProductImage } from "@/catalog/resolveProductImage";
 import type { Product } from "@/types/Product.interface";
 import { useBuilderStore } from "../store/builder.store";
-import { selectActiveVariant } from "../store/selectors";
+import { selectActiveVariant, selectIsSelected } from "../store/selectors";
 import ItemSelector from "./ItemSelector";
 import QuantityStepper from "./QuantityStepper";
 import VariantSelector from "./VariantSelector";
@@ -16,10 +16,15 @@ function ProductCard({ product }: { product: Product }) {
     : 0;
 
   const activeVariant = useBuilderStore(selectActiveVariant(product.id));
+  const isSelected = useBuilderStore(selectIsSelected(product.id));
   const image = resolveProductImage(product, activeVariant);
 
   return (
-    <div className="relative flex items-center rounded-xl border border-slate-200 bg-white p-4">
+    <div
+      className={`relative flex items-center rounded-xl bg-white border-2 p-4 duration-200 ${
+        isSelected ? "border-wyze-purple ": "border-white"
+      }`}
+    >
       {/* image and badge */}
       <div>
         {savings > 0 && <SavingsBadge percent={savings} />}

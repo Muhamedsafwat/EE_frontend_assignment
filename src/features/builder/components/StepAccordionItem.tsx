@@ -69,7 +69,7 @@ function StepAccordionItem({
                     e.stopPropagation();
                     nextStep();
                   }}
-                  className="rounded-lg border border-wyze-purple px-5 py-2.5 text-sm font-semibold text-wyze-purple hover:bg-surface"
+                  className="rounded-lg border border-wyze-purple px-5 py-2.5 text-sm font-semibold text-wyze-purple hover:bg-wyze-purple hover:text-white cursor-pointer duration-200"
                 >
                   Next: {nextStepTitle}
                 </button>
