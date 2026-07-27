@@ -9,7 +9,7 @@ const LABELS: Record<SaveStatus, string> = {
   error: "Couldn't save your system, try again",
 };
 
-/** How long the outcome stays up before the button offers to save again. */
+// How long the outcome stays up before the button offers to save again
 const FEEDBACK_MS = 3000;
 
 function SaveSystemButton() {

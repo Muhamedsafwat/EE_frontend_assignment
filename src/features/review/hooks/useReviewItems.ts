@@ -7,11 +7,6 @@ import {
 import type { ReviewGroup } from "../types/ReviewItem.interface";
 import { useSelectedItems } from "./useSelectedItems";
 
-/**
- * Selections grouped into review sections. Sections always render in
- * REVIEW_CATEGORY_ORDER, whatever order the products were chosen in, and empty
- * ones are dropped.
- */
 export function useReviewItems(): ReviewGroup[] {
   const items = useSelectedItems();
 
@@ -25,7 +20,9 @@ export function useReviewItems(): ReviewGroup[] {
         );
         if (groupItems.length === 0) return [];
 
-        return [{ category, title: CATEGORY_LABELS[category], items: groupItems }];
+        return [
+          { category, title: CATEGORY_LABELS[category], items: groupItems },
+        ];
       }),
     [items],
   );

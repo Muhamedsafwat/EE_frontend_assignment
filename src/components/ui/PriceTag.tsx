@@ -5,7 +5,7 @@ type PriceVariant = "builder" | "review";
 interface PriceTagProps {
   price: number;
   comparedAtPrice?: number;
-  /** Appended to both prices, e.g. "/mo" for subscription plans. */
+  // Appended to both prices, e.g. "/mo" for subscription plans.
   suffix?: string;
   variant?: PriceVariant;
   className?: string;

@@ -2,10 +2,7 @@ import type { BuilderStep } from "@/types/Step.interface";
 import type { BuilderStore } from "../types/BuilderStore.interface";
 import type { Selection } from "../types/Selection.interface";
 
-/**
- * Matches the one selection line for a product/variant pair. A product with no
- * variant only matches lines that carry no variant.
- */
+// Matches the one selection line for a product/variant pair. A product with no variant only matches lines that carry no variant.
 export function matchesSelection(productId: string, variantId?: string) {
   return (selection: Selection) =>
     selection.productId === productId &&

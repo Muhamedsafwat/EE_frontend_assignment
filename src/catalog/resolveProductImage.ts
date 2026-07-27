@@ -1,12 +1,6 @@
 import type { Product } from "@/types/Product.interface";
 
-/**
- * The image to show for a product, optionally in a specific variant.
- *
- * Falls back from the requested variant, to the product's own image, to the
- * first variant — so a product that only carries images on its variants still
- * renders before one is picked.
- */
+//The image to show for a product (image, variant, fallback).
 export function resolveProductImage(
   product: Product,
   variantId?: string,
