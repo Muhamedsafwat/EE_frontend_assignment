@@ -13,14 +13,16 @@ function ReviewLineItem({ item }: ReviewLineItemProps) {
   const { product, variant } = item;
   const image = resolveProductImage(product, variant?.id);
 
+  const isPlan = product.category == "plans"
+
   return (
     <li className="flex items-center gap-3 py-3">
-      <Thumbnail src={image} alt={product.name} className="h-9 w-9 bg-white" />
-      <p className="type-review-item-title flex-1">
+      <Thumbnail src={image} alt={product.name} className={`h-9 w-9 ${!isPlan && "bg-white"}`} />
+      <p className={`type-review-item-title flex-1 ${isPlan && "font-bold"}`}>
         {product.name} {variant?.name ? `(${variant.name})` : ""}
         {product.isRequired && <span className="text-muted"> (Required)</span>}
       </p>
-      {product.category !== "plans" && (
+      {!isPlan && (
         <QuantityStepper styleVariant="review" variantId={variant?.id} productId={product.id} />
       )}
       <PriceTag
