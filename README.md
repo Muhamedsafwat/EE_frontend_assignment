@@ -62,8 +62,6 @@ It is responsible for:
 
 This keeps business logic outside React components and avoids repeating the same logic across the application. The catalog contains no React code.
 
-Review items are built by the review feature's hooks, which resolve each selection against the catalog.
-
 ---
 
 ## State Management
@@ -81,7 +79,7 @@ The review panel reads directly from the store instead of keeping its own state.
 
 ---
 
-## Product Selections
+### Product Selections
 
 Selections only store the minimum required information:
 
@@ -91,51 +89,19 @@ Selections only store the minimum required information:
 
 Any additional product information is retrieved from the catalog when needed.
 
----
+## Other Desicions:
 
-## Variants
+**Variants**: Each variant keeps its own quantity, Changing the selected variant only changes which quantity the stepper controls.
 
-Each variant keeps its own quantity.
+**Plans**: A plan is mandatory and only one can be selected at a time, so selecting another plan replaces the current one. There is no deselect, and the button on the selected plan is disabled instead.
 
-Changing the selected variant only changes which quantity the stepper controls.
+**Required Products**: Some products are marked as required and cannot be removed. Their quantity stops at 1.
 
----
+**Review Ordering**: The review panel groups selections by category in its own order.
 
-## Plans
+**Data**: Products and builder steps are loaded from local JSON files in `src/catalog/`, making the UI fully data-driven.
 
-Plans are treated differently from quantity-based products.
-
-A plan is mandatory and only one can be selected at a time, so selecting another plan replaces the current one. There is no deselect, and the button on the selected plan is disabled instead.
-
----
-
-## Required Products
-
-Some products are marked as required and cannot be removed. Their quantity stops at 1 instead of dropping to zero.
-
-Every other product leaves the order once its quantity reaches zero, so a zero-quantity line never exists.
-
----
-
-## Shipping
-
-Fast shipping is included with every order, so it is never shown as a selectable product.
-
-It is read from the catalog and rendered as its own row in the summary, above the total.
-
----
-
-## Review Ordering
-
-The review panel groups selections by category in its own order, which is not the order of the wizard.
-
-The wizard asks for the plan third, while the review panel lists it last. Empty categories are not rendered.
-
----
-
-## Data
-
-Products and builder steps are loaded from local JSON files in `src/catalog/`, making the UI fully data-driven.
+**Default System**: A first visit starts on a seeded starter system rather than an empty builder. A saved system takes precedence when one exists.
 
 ---
 
@@ -149,15 +115,14 @@ The current step is not stored, and active variants are derived from the restore
 
 ---
 
-## Default System
-
-A first visit starts on a seeded starter system rather than an empty builder. A saved system takes precedence when one exists.
-
----
-
 ## Notes
 
 - Checkout is a placeholder.
 - No backend was implemented since it was optional for the task.
 - Not all font weights are used as the font package I found didn't contain "semibold"
-- Lighthouse gives a warning about image sizes, in a real case scenario, I'd use different images for thumbnails or Next/Image.
+- The live preview is available on [Vercel](https://ee-frontend-assignment.vercel.app/).
+- **Achived lighhouse scores**:
+  - Performance: 100
+  - Accessibility: 96
+  - Best pracices: 100
+  - SEO: 91
